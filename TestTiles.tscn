@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Sprites/wall.png" type="Texture" id=1]
-[ext_resource path="res://Sprites/Wall_back.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/icon.png" type="Texture" id=1]
+[ext_resource path="res://Sprites/enemyTEMP.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 15.2381, 15.2381 )
+extents = Vector2( 30.4762, 30.4762 )
 
 [node name="Node2D" type="Node2D"]
 
@@ -19,7 +19,6 @@ texture = ExtResource( 1 )
 shape = SubResource( 1 )
 
 [node name="Floor" type="Sprite" parent="."]
-position = Vector2( 20, 8.88178e-016 )
-scale = Vector2( 0.625, 0.640625 )
+position = Vector2( 40, 0 )
 texture = ExtResource( 2 )
 

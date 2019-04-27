@@ -4,7 +4,7 @@
 [ext_resource path="res://Sprites/Wall_back.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 15.2381, 15.2381 )
+extents = Vector2( 30.4762, 30.4762 )
 
 [resource]
 0/name = "Wall"
