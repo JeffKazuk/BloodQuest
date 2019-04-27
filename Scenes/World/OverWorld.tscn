@@ -28,11 +28,6 @@ position = Vector2( 170, 0 )
 [node name="fireBoss" parent="." instance=ExtResource( 5 )]
 position = Vector2( -110, 180 )
 
-[node name="Camera2D2" type="Camera2D" parent="."]
-current = true
-smoothing_enabled = true
-script = ExtResource( 5 )
-
 [connection signal="fire" from="Player" to="." method="_on_Player_fire"]
 [connection signal="sword_picked_up" from="Player" to="World Sword" method="_on_Player_sword_picked_up"]
 [connection signal="area_entered" from="World Sword" to="Player" method="_on_World_Sword_area_entered"]
