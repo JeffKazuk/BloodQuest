@@ -5,9 +5,8 @@
 [ext_resource path="res://Sprites/fill.png" type="Texture" id=3]
 [ext_resource path="res://Scripts/Healthbar.gd" type="Script" id=4]
 
-[node name="Gameplay UI" type="Control"]
-margin_right = 1024.0
-margin_bottom = 600.0
+[node name="HealthBar" type="CanvasLayer"]
+layer = 0
 script = ExtResource( 1 )
 
 [node name="Healthbar" type="TextureProgress" parent="."]
@@ -15,12 +14,13 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -198.0
-margin_top = -53.0
-margin_right = 198.0
+margin_left = -512.0
+margin_top = -600.0
+margin_right = -116.0
+margin_bottom = -547.0
 value = 100.0
 texture_under = ExtResource( 2 )
 texture_progress = ExtResource( 3 )
 script = ExtResource( 4 )
 
-[connection signal="health_changed" from="." to="Healthbar" method="_on_Gameplay_UI_health_changed"]
+[connection signal="health_changed" from="." to="Healthbar" method="_on_HealthBar_health_changed"]

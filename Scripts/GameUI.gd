@@ -1,4 +1,4 @@
-extends Control
+extends CanvasLayer
 signal health_changed(health)
 
 func _on_Health_health_changed(health):
