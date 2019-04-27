@@ -99,9 +99,9 @@ func attack(spot):
     # print(spot)
     if equipped == 'sword':
         for node in get_tree().get_nodes_in_group('enemy'):
-            if position.distance_to(node.position) < 70:
+            if position.distance_to(node.position) < 150:
                 
-                var angle_to_enemy = rad2deg(direction.angle_to(node.direction))
+                var angle_to_enemy = rad2deg(direction.angle_to(node.velocity))
                 #print(direction)
                 #print(node.direction)
                 print(abs(angle_to_enemy))
@@ -113,7 +113,7 @@ func attack(spot):
         for node in get_tree().get_nodes_in_group('enemy'):
             if position.distance_to(node.position) < 40:
                 var direction = (get_global_mouse_position()-position).normalized()
-                var angle_to_enemy = rad2deg(direction.angle_to(node.direction))
+                var angle_to_enemy = rad2deg(direction.angle_to(node.velocity))
                     #print(direction)
                     #print(node.direction)
                 print(abs(angle_to_enemy))
