@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scripts/PlayerController.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/sprite_1.png" type="Texture" id=2]
@@ -9,7 +9,6 @@
 [ext_resource path="res://Sprites/sprite_2.png" type="Texture" id=7]
 [ext_resource path="res://Sprites/sprite_7.png" type="Texture" id=8]
 [ext_resource path="res://Sprites/sprite_6.png" type="Texture" id=9]
-[ext_resource path="res://Scenes/UI/healthbar.tscn" type="PackedScene" id=10]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -69,12 +68,5 @@ animation = "90"
 scale = Vector2( 3, 3 )
 shape = SubResource( 2 )
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( -520, -290 )
-anchor_mode = 0
-current = true
-drag_margin_h_enabled = false
-drag_margin_v_enabled = false
-
-[node name="HealthBar" parent="Camera2D" instance=ExtResource( 10 )]
+[node name="Health" type="Node" parent="."]
 
