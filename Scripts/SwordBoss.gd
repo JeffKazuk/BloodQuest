@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 
 var speed = 1
-
+export var direction = 0
 
 
 func _ready():
@@ -11,10 +11,10 @@ func _ready():
 
 func _physics_process(delta):
 	var target = get_parent().find_node("Player")
-	var direction = (target.global_position - global_position).normalized()
+	direction = (target.global_position - global_position).normalized()
 	var distance = global_position.distance_to(target.global_position)
 	#print(distance)
-	if distance > 100:
+	if distance > 20:
 		move_and_collide(direction*speed) 
 
 #func _process(delta):

@@ -13,3 +13,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+
+func _on_Player_sword_picked_up():
+	pass # Replace with function body.
