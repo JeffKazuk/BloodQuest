@@ -110,7 +110,7 @@ func attack(spot):
     if equipped == 'fire':
         var Fire = preload('res://Scenes/Player/Fire.tscn')
         emit_signal('fire', Fire, current_angle(), position)
-        print(deg2rad(float(facing)))
+        #print(deg2rad(float(facing)))
 
         
 

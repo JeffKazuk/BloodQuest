@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 
 var speed = 2
-export (Vector2) var velocity
+var velocity=0
 var timer = 5
 var angle_to_player = 0;
 signal fire (Fire, rotation, position)
@@ -30,10 +30,10 @@ func _process(delta):
 	if timer<=0:
 		attack()
 		timer = 5
-	print(rotation)
+	#print(rotation)
 	var facing = 'E'
 	var angle = velocity.angle()
-	print(angle)
+	#print(angle)
 	if angle > PI/8 && angle < 3*PI/8:
 		facing = 'SE'
 	if angle > 3*PI/8 && angle < 5*PI/8:

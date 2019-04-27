@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 
 var speed = 1
-export var velocity = 0
+var velocity = 0
 var timer = 5
 var angle_to_player
 var player
@@ -64,7 +64,7 @@ func attack():
         var angle_to_player = rad2deg(velocity.angle_to(player.velocity))
                 #print(velocity)
                 #print(node.velocity)
-        print(abs(angle_to_player))
+        #print(abs(angle_to_player))
                 #I very clearly fucked this up but it works
         if abs(angle_to_player) < 202.5 && abs(angle_to_player) > 157.5:
             print('hit player')

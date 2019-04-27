@@ -2,10 +2,11 @@ extends KinematicBody2D
 
 
 var speed = 3
-export var velocity = 0
+var velocity = 0
 var timer = 5
 var angle_to_player
 var player
+var distance = 0
 
 func _ready():
 	set_physics_process(true)
@@ -15,12 +16,10 @@ func _ready():
 func _physics_process(delta):
 	var target = get_parent().find_node("Player")
 	velocity = (target.global_position - global_position).normalized()
-	var distance = global_position.distance_to(target.global_position)
+	distance = global_position.distance_to(target.global_position)
 	#print(distance)
-	if distance > 100:
-		move_and_collide(velocity*speed)
-	if distance < 100: #&& distance > 75:
-		move_and_collide(-velocity*speed)  
+	if distance >= 100:
+		move_and_collide(velocity*speed) 
 
 func _process(delta):
 	timer -= delta
@@ -67,7 +66,7 @@ func attack():
         var angle_to_player = rad2deg(velocity.angle_to(player.velocity))
                 #print(direction)
                 #print(node.direction)
-        print(abs(angle_to_player))
+        #print(abs(angle_to_player))
                 #I very clearly fucked this up but it works
         if abs(angle_to_player) < 202.5 && abs(angle_to_player) > 157.5:
             print('hit player')
