@@ -7,6 +7,7 @@ var weapons = ['sword', 'stick', 'fire']
 var equipped = ''
 var facing
 var velocity
+var dash_timer = 0
 
 signal stick_picked_up
 signal sword_picked_up
@@ -48,7 +49,7 @@ func update_direction():
         facing = '135'
     if angle > -PI && angle < -7*PI/8:
         facing = '180'
-    print(facing)
+    #print(facing)
     $AnimatedSprite.animation = facing
     
 #use _input for any inputs that need to be instant (mostly just mouse)
@@ -94,9 +95,42 @@ func _on_World_Dagger_body_entered(body):
     pickup_item('dagger')
     $Health.take_damage(10)
 
+func dash():
+    var angle = current_angle()
+    print(angle
+    if angle > PI/8 && angle < 3*PI/8:
+        rot = PI/4
+    if angle > 3*PI/8 && angle < 5*PI/8:
+        rot = PI/2
+    if angle > 5*PI/8 && angle < 7*PI/8:
+        rot = 3*PI/4
+    if angle > 7*PI/8 && angle < PI:
+        rot = PI
+    if angle > -PI/8 && angle < PI/8:
+        rot = 0
+    if angle > -3*PI/8 && angle < -PI/8:
+        rot = -PI/4
+    if angle > -5*PI/8 && angle < -3*PI/8:
+        rot = -PI/2
+    if angle > -7*PI/8 && angle < -5*PI/8:
+        rot = -3*PI/4
+    if angle > -PI && angle < -7*PI/8:
+        rot = -PI
 
 func attack(spot):
     # print(spot)
+    if equipped == 'stick':
+        for node in get_tree().get_nodes_in_group('enemy'):
+            if position.distance_to(node.position) < 150:
+                
+                var angle_to_enemy = rad2deg(direction.angle_to(node.velocity))
+                #print(direction)
+                #print(node.direction)
+                print(abs(angle_to_enemy))
+                #I very clearly fucked this up but it works
+                if abs(angle_to_enemy) < 202.5 && abs(angle_to_enemy) > 157.5:
+                    print('hit enemy')
+
     if equipped == 'sword':
         for node in get_tree().get_nodes_in_group('enemy'):
             if position.distance_to(node.position) < 150:
@@ -137,6 +171,10 @@ func _process(delta):
         velocity.y += 1
     if Input.is_action_pressed("up"):
         velocity.y -= 1
+    if Input.is_action_pressed('dash'):
+        if dash_timer <= 0:
+            dash()
+            dash_timer = 3
     if Input.is_action_pressed('one'):
         if len(weapons) >= 1:
             equipped = weapons[0]
