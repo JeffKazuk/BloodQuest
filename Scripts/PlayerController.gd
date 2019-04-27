@@ -42,14 +42,16 @@ func update_direction():
         $AnimatedSprite.animation = 'NW'
     if angle > -PI && angle < -7*PI/8:
         $AnimatedSprite.animation = 'W'
+    
 
-#function thats called every delta second
+
 
 func pickup_stick():
     has_stick = true
 
 func pickup_sword():
     has_sword = true
+    emit sword_picked_up
 
 func pickup_fire():
     has_fire = true
