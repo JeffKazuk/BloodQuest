@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scripts/PlayerController.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/sprite_1.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Sprites/sprite_2.png" type="Texture" id=7]
 [ext_resource path="res://Sprites/sprite_7.png" type="Texture" id=8]
 [ext_resource path="res://Sprites/sprite_6.png" type="Texture" id=9]
+[ext_resource path="res://Scripts/Health.gd" type="Script" id=10]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -69,4 +70,14 @@ scale = Vector2( 3, 3 )
 shape = SubResource( 2 )
 
 [node name="Health" type="Node" parent="."]
+script = ExtResource( 10 )
 
+[node name="Hitbox" type="Area2D" parent="."]
+collision_mask = 1024
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Hitbox"]
+scale = Vector2( 3, 3 )
+shape = SubResource( 2 )
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_Hitbox_area_entered"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_Hitbox_body_entered"]

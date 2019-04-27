@@ -80,7 +80,21 @@ func pickup_item(item):
 
 func _on_World_Sword_body_entered(body):
     pickup_item('sword')
+    $Health.take_damage(30)
     
+func _on_World_Stick_body_entered(body):
+    pickup_item('stick')
+    $Health.take_damage(5)
+
+func _on_World_Fire_body_entered(body):
+    pickup_item('fire')
+    $Health.take_damage(20)
+
+func _on_World_Dagger_body_entered(body):
+    pickup_item('dagger')
+    $Health.take_damage(10)
+
+
 func attack(spot):
     # print(spot)
     if equipped == 'sword':
@@ -112,8 +126,6 @@ func attack(spot):
         emit_signal('fire', Fire, current_angle(), position)
         #print(deg2rad(float(facing)))
 
-        
-
 func _process(delta):
     # The player's movement vector.
     velocity = Vector2()
@@ -144,3 +156,7 @@ func _process(delta):
     if velocity.length() > 0: #if the length of the vector is greater than 0
         velocity = velocity.normalized() * speed #sets the player's velocity
     move_and_collide(velocity*delta)#moves the player
+
+#detect and take damage from fireballs
+func _on_Hitbox_area_entered(area):
+	$Health.take_damage(10)
