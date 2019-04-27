@@ -2,28 +2,28 @@ extends KinematicBody2D
 
 
 var speed = 2
-export (Vector2) var direction
+export (Vector2) var velocity
 var timer = 5
 var angle_to_player = 0;
 signal fire (Fire, rotation, position)
 var player
+var distance = 0
 
 func _ready():
 	set_physics_process(true)
-	direction = Vector2()
 	player = get_parent().find_node("Player")
 	#print(target)
 
 func _physics_process(delta):
 	var target = get_parent().find_node("Player")
-	direction = (target.global_position - global_position).normalized()
-	var distance = global_position.distance_to(target.global_position)
+	velocity = (target.global_position - global_position).normalized()
+	distance = global_position.distance_to(target.global_position)
 	#$set_global_rotation(deg2rad(current_angle()))
 	#print(distance)
-	if distance > 100:
-		move_and_collide(direction*speed)
-	if distance < 100: #&& distance > 75:
-		move_and_collide(-direction*(speed*1.5))  
+	if distance >= 125:
+		move_and_collide(velocity*speed)
+	if distance <=124: #&& distance > 75:
+		move_and_collide(-velocity*(speed*1.5))  
 
 func _process(delta):
 	timer -= delta
@@ -32,7 +32,7 @@ func _process(delta):
 		timer = 5
 	print(rotation)
 	var facing = 'E'
-	var angle = direction.angle()
+	var angle = velocity.angle()
 	print(angle)
 	if angle > PI/8 && angle < 3*PI/8:
 		facing = 'SE'
@@ -64,12 +64,12 @@ func attack():
     print("Enemy is attacking")
     var player = get_parent().find_node("Player")
     var Fire = preload('res://Scenes/Player/Fire.tscn')
-    emit_signal('fire', Fire, direction.angle(), position)
+    emit_signal('fire', Fire, velocity.angle(), position)
     if position.distance_to(player.global_position) < 70:
-        #direction = (player.global_position - global_position).normalized()
+        #velocity = (player.global_position - global_position).normalized()
         
-                #print(direction)
-                #print(node.direction)
+                #print(velocity)
+                #print(node.velocity)
         print(abs(current_angle()))
                 #I very clearly fucked this up but it works
         if abs(current_angle()) < 202.5 && abs(current_angle()) > 157.5:

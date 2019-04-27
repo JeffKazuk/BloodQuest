@@ -6,6 +6,7 @@ export var direction = 0;
 var weapons = ['sword', 'stick', 'fire']
 var equipped = ''
 var facing
+var velocity
 
 signal stick_picked_up
 signal sword_picked_up
@@ -115,7 +116,7 @@ func attack(spot):
 
 func _process(delta):
     # The player's movement vector.
-    var velocity = Vector2()
+    velocity = Vector2()
     if Input.is_action_pressed("right"):
         velocity.x += 1
     if Input.is_action_pressed("left"):
