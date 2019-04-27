@@ -1,11 +1,8 @@
 extends Area2D
 
 export var speed = 400  # How fast the player will move (pixels/sec).
-var screen_size  # Size of the game window.
 
-func _ready():
-    screen_size = get_viewport_rect().size
-
+#function thats called every delta second
 func _process(delta):
     var velocity = Vector2()  # The player's movement vector.
     if Input.is_action_pressed("right"):
@@ -16,6 +13,6 @@ func _process(delta):
         velocity.y += 100
     if Input.is_action_pressed("up"):
         velocity.y -= 100
-    if velocity.length() > 0:
-        velocity = velocity.normalized() * speed
-    position += velocity * delta
+    if velocity.length() > 0: #if the length of the vector is greater than 0
+        velocity = velocity.normalized() * speed #sets the player's velocity
+    position += velocity * delta #moves the player
