@@ -10,9 +10,6 @@
 [ext_resource path="res://Sprites/sprite_3.png" type="Texture" id=8]
 [ext_resource path="res://Sprites/sprite_1.png" type="Texture" id=9]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 16, 16 )
-
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
 "frames": [ ExtResource( 2 ) ],
@@ -56,20 +53,20 @@ animations = [ {
 "speed": 5.0
 } ]
 
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 16, 16 )
+
 [node name="Player" type="Node2D"]
 position = Vector2( 16, 16 )
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="KinematicBody2D" type="KinematicBody2D" parent="."]
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_group_": true
-}
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource( 1 )
-
-[node name="AnimatedSprite" type="AnimatedSprite" parent="Area2D"]
+[node name="AnimatedSprite" type="AnimatedSprite" parent="KinematicBody2D"]
 scale = Vector2( 3, 3 )
 frames = SubResource( 2 )
 animation = "N"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
+shape = SubResource( 1 )
 

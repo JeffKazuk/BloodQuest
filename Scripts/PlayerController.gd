@@ -1,6 +1,10 @@
-extends Area2D
+extends KinematicBody2D
 
 export var speed = 400  # How fast the player will move (pixels/sec).
+var has_stick = false
+var has_sword = false
+var has_fire = false
+var has_dagger = false
 
 func update_direction():
     #Gets the location of the mouse in radians
@@ -25,6 +29,7 @@ func update_direction():
         $AnimatedSprite.animation = 'NW'
     if angle > -PI && angle < -7*PI/8:
         $AnimatedSprite.animation = 'W'
+
 #function thats called every delta second
 func _process(delta):
     var velocity = Vector2()  # The player's movement vector.
@@ -40,3 +45,4 @@ func _process(delta):
     if velocity.length() > 0: #if the length of the vector is greater than 0
         velocity = velocity.normalized() * speed #sets the player's velocity
     position += velocity * delta #moves the player
+    
