@@ -27,10 +27,6 @@ smoothing_enabled = true
 script = ExtResource( 5 )
 
 [node name="Gameplay UI" parent="Camera2D" instance=ExtResource( 6 )]
-margin_left = -510.0
-margin_top = -300.0
-margin_right = 514.0
-margin_bottom = 300.0
 
 [connection signal="body_entered" from="World Sword" to="Player" method="_on_World_Sword_body_entered"]
 [connection signal="fire" from="fireBoss" to="." method="_on_fireBoss_fire"]
