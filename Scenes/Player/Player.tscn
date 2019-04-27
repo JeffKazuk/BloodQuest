@@ -73,7 +73,7 @@ shape = SubResource( 2 )
 script = ExtResource( 10 )
 
 [node name="Hitbox" type="Area2D" parent="."]
-collision_mask = 1024
+collision_mask = 2048
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Hitbox"]
 scale = Vector2( 3, 3 )

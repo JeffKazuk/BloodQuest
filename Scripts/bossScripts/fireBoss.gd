@@ -3,7 +3,7 @@ extends KinematicBody2D
 
 var speed = 2
 var velocity=0
-var timer = 5
+var timer = .5
 var angle_to_player = 0;
 signal fire (Fire, rotation, position)
 var player
@@ -29,7 +29,7 @@ func _process(delta):
 	timer -= delta
 	if timer<=0:
 		attack()
-		timer = 5
+		timer = 0.5
 	#print(rotation)
 	var facing = 'E'
 	var angle = velocity.angle()
@@ -63,7 +63,7 @@ func current_angle():
 func attack():
     print("Enemy is attacking")
     var player = get_parent().find_node("Player")
-    var Fire = preload('res://Scenes/Player/Fire.tscn')
+    var Fire = preload('res://Scenes/Bosses/fireBoss/MeanGuyFire.tscn')
     emit_signal('fire', Fire, velocity.angle(), position)
     if position.distance_to(player.global_position) < 70:
         #velocity = (player.global_position - global_position).normalized()

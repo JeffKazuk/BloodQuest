@@ -9,6 +9,7 @@ var facing
 var velocity
 var dash_timer = 0
 var frame_timer = 0
+var fire_timer = 0
 
 signal stick_picked_up
 signal sword_picked_up
@@ -161,14 +162,17 @@ func attack(spot):
                     print('hit')
 
     if equipped == 'fire':
-        var Fire = preload('res://Scenes/Player/Fire.tscn')
-        emit_signal('fire', Fire, current_angle(), position)
+        if fire_timer <= 0:
+            var Fire = preload('res://Scenes/Player/Fire.tscn')
+            emit_signal('fire', Fire, current_angle(), position)
+            fire_timer = 0.5
         #print(deg2rad(float(facing)))
 
 func _process(delta):
     # The player's movement vector.
     velocity = Vector2()
     dash_timer -= delta
+    fire_timer -= delta
     if Input.is_action_pressed("right"):
         velocity.x += 1
     if Input.is_action_pressed("left"):
@@ -180,7 +184,7 @@ func _process(delta):
     if Input.is_action_pressed('dash'):
         if dash_timer <= 0:
             dash()
-            dash_timer = 3
+            dash_timer = 1
     if Input.is_action_pressed('one'):
         if len(weapons) >= 1:
             equipped = weapons[0]
