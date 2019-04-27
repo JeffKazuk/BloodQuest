@@ -2,8 +2,10 @@ extends KinematicBody2D
 
 
 var speed = 2
-export var direction = 0
+export (Vector2) var dir
 var timer = 5
+var angle_to_player = 0;
+signal fire (Fire, rotation, position)
 
 func _ready():
 	set_physics_process(true)
@@ -11,13 +13,14 @@ func _ready():
 
 func _physics_process(delta):
 	var target = get_parent().find_node("Player")
-	direction = (target.global_position - global_position).normalized()
+	dir = (target.global_position - global_position).normalized()
 	var distance = global_position.distance_to(target.global_position)
+	set_global_rotation(current_angle())
 	#print(distance)
 	if distance > 100:
-		move_and_collide(direction*speed)
+		move_and_collide(dir*speed)
 	if distance < 100: #&& distance > 75:
-		move_and_collide(-direction*(speed*1.5))  
+		move_and_collide(-dir*(speed*1.5))  
 
 func _process(delta):
 	timer -= delta
@@ -25,16 +28,25 @@ func _process(delta):
 		attack()
 		timer = 5
 
+func current_angle():
+	var player = get_parent().find_node("Player")
+	angle_to_player = rad2deg(dir.angle_to(player.direction))
+	return angle_to_player
+
 func attack():
     print("Enemy is attacking")
     var player = get_parent().find_node("Player")
+    var Fire = preload('res://Scenes/Player/Fire.tscn')
+    emit_signal('fire', Fire, current_angle(), position)
     if position.distance_to(player.global_position) < 70:
         #direction = (player.global_position - global_position).normalized()
-        var angle_to_player = rad2deg(direction.angle_to(player.direction))
+        
                 #print(direction)
                 #print(node.direction)
-        print(abs(angle_to_player))
+        print(abs(current_angle()))
                 #I very clearly fucked this up but it works
-        if abs(angle_to_player) < 202.5 && abs(angle_to_player) > 157.5:
+        if abs(current_angle()) < 202.5 && abs(current_angle()) > 157.5:
             print('hit player')
+        
+        #print(deg2rad(float(facing)))
 
