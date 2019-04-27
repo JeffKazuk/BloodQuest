@@ -2,9 +2,31 @@ extends Area2D
 
 export var speed = 400  # How fast the player will move (pixels/sec).
 
+func update_direction():
+    var angle = get_global_mouse_position().angle_to_point(position)
+    print(angle)
+    if angle > PI/8 && angle < 3*PI/8:
+        $AnimatedSprite.animation = 'SE'
+    if angle > 3*PI/8 && angle < 5*PI/8:
+        $AnimatedSprite.animation = 'S'
+    if angle > 5*PI/8 && angle < 7*PI/8:
+        $AnimatedSprite.animation = 'SW'
+    if angle > 7*PI/8 && angle < PI:
+        $AnimatedSprite.animation = 'W'
+    if angle > -PI/8 && angle < PI/8:
+        $AnimatedSprite.animation = 'E'
+    if angle > -3*PI/8 && angle < -PI/8:
+        $AnimatedSprite.animation = 'NE'
+    if angle > -5*PI/8 && angle < -3*PI/8:
+        $AnimatedSprite.animation = 'N'
+    if angle > -7*PI/8 && angle < -5*PI/8:
+        $AnimatedSprite.animation = 'NW'
+    if angle > -PI && angle < -7*PI/8:
+        $AnimatedSprite.animation = 'W'
 #function thats called every delta second
 func _process(delta):
     var velocity = Vector2()  # The player's movement vector.
+    update_direction()
     if Input.is_action_pressed("right"):
         velocity.x += 100
     if Input.is_action_pressed("left"):
