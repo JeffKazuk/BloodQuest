@@ -20,8 +20,6 @@ position = Vector2( -110, 180 )
 
 [node name="Player" parent="." instance=ExtResource( 4 )]
 editor/display_folded = true
-speed = null
-direction = null
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true

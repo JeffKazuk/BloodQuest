@@ -8,6 +8,7 @@ var equipped = ''
 var facing
 var velocity
 var dash_timer = 0
+var frame_timer = 0
 
 signal stick_picked_up
 signal sword_picked_up
@@ -97,7 +98,8 @@ func _on_World_Dagger_body_entered(body):
 
 func dash():
     var angle = current_angle()
-    print(angle
+    var rot
+    frame_timer = 5
     if angle > PI/8 && angle < 3*PI/8:
         rot = PI/4
     if angle > 3*PI/8 && angle < 5*PI/8:
@@ -116,6 +118,9 @@ func dash():
         rot = -3*PI/4
     if angle > -PI && angle < -7*PI/8:
         rot = -PI
+    velocity.x = cos(rot)
+    velocity.y = sin(rot)
+    speed *= 10
 
 func attack(spot):
     # print(spot)
@@ -163,6 +168,7 @@ func attack(spot):
 func _process(delta):
     # The player's movement vector.
     velocity = Vector2()
+    dash_timer -= delta
     if Input.is_action_pressed("right"):
         velocity.x += 1
     if Input.is_action_pressed("left"):
@@ -194,6 +200,9 @@ func _process(delta):
     if velocity.length() > 0: #if the length of the vector is greater than 0
         velocity = velocity.normalized() * speed #sets the player's velocity
     move_and_collide(velocity*delta)#moves the player
+    frame_timer -= 1
+    if frame_timer <= 0:
+        speed = 400
 
 #detect and take damage from fireballs
 func _on_Hitbox_area_entered(area):
