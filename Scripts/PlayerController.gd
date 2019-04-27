@@ -53,7 +53,7 @@ func update_direction():
 #use _input for any inputs that need to be instant (mostly just mouse)
 func _input(event):
     if event.is_action_pressed('click'):
-        attack()
+        attack(event.position)
     if event.is_action_pressed('zoom_in'):
         if len(weapons) >= 2:
             var prev_item = weapons.find(equipped)-1
@@ -80,7 +80,8 @@ func pickup_item(item):
 func _on_World_Sword_body_entered(body):
     pickup_item('sword')
     
-func attack():
+func attack(spot):
+    # print(spot)
     if equipped == 'sword':
         for node in get_tree().get_nodes_in_group('enemy'):
             if position.distance_to(node.position) < 70:
@@ -107,7 +108,10 @@ func attack():
 
     if equipped == 'fire':
         var Fire = preload('res://Scenes/Player/Fire.tscn')
-        emit_signal('fire', Fire, rad2deg(current_angle()), position)
+        emit_signal('fire', Fire, current_angle(), position)
+        print(deg2rad(float(facing)))
+
+        
 
 func _process(delta):
     # The player's movement vector.

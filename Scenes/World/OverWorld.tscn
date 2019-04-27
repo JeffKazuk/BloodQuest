@@ -11,6 +11,7 @@ script = ExtResource( 1 )
 [node name="Player" parent="." instance=ExtResource( 2 )]
 
 [node name="World Sword" parent="." instance=ExtResource( 3 )]
+visible = false
 position = Vector2( 170, 0 )
 
 [node name="SwordBoss" parent="." groups=[

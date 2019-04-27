@@ -11,9 +11,29 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
-func _on_Player_fire(Fire, direction, position):
+func _on_Player_fire(Fire, angle, position):
 	var f = Fire.instance()
+	var rot = 0
 	add_child(f)
-	f.rotation = direction
+	if angle > PI/8 && angle < 3*PI/8:
+	    rot = PI/4
+	if angle > 3*PI/8 && angle < 5*PI/8:
+	    rot = PI/2
+	if angle > 5*PI/8 && angle < 7*PI/8:
+	    rot = 3*PI/4
+	if angle > 7*PI/8 && angle < PI:
+	    rot = PI
+	if angle > -PI/8 && angle < PI/8:
+	    rot = 0
+	if angle > -3*PI/8 && angle < -PI/8:
+	    rot = -PI/4
+	if angle > -5*PI/8 && angle < -3*PI/8:
+	    rot = -PI/2
+	if angle > -7*PI/8 && angle < -5*PI/8:
+	    rot = -3*PI/4
+	if angle > -PI && angle < -7*PI/8:
+	    rot = -PI
+	f.rotation = rot
 	f.position = position
-	f.velocity = f.velocity.rotated(direction)
+	f.velocity.x = cos(rot)
+	f.velocity.y = sin(rot)
