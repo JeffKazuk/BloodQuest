@@ -7,14 +7,14 @@ var has_fire = false
 var has_dagger = false
 
 func _ready():
-    #position.x = 400
-    #position.y = 400
-	pass
+    position.x = 400
+    position.y = 400
+
 func update_direction():
     #Gets the location of the mouse in radians
     var angle = get_global_mouse_position().angle_to_point(get_position())
-    #print(get_global_mouse_position())
-    #print(get_position())
+    print(get_global_mouse_position())
+    print(get_position())
     #Changes the looking direction of the character to roughly
     #where the mouse is
     #print(angle)
@@ -39,8 +39,11 @@ func update_direction():
 
 #function thats called every delta second
 func _process(delta):
-    var velocity = Vector2()  # The player's movement vector.
     update_direction()
+    #move(delta)
+    
+func move(delta):
+    var velocity = Vector2()  # The player's movement vector.
     if Input.is_action_pressed("right"):
         velocity.x += 1
     if Input.is_action_pressed("left"):
