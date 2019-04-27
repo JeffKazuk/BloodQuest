@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 export var speed = 400  # How fast the player will move (pixels/sec).
 
-var weapons = []
+var weapons = ['sword', 'stick', 'fire']
 var equipped = ''
 var facing
 
@@ -10,6 +10,7 @@ signal stick_picked_up
 signal sword_picked_up
 signal fire_picked_up
 signal dagger_picked_up
+signal fire(Fire, rotation, position)
 
 func _ready():
     #position.x = 400
@@ -53,13 +54,26 @@ func _input(event):
     if event.is_action_pressed('click'):
         attack()
     if event.is_action_pressed('zoom_in'):
-        print('prev weapon')
+        if len(weapons) >= 2:
+            var prev_item = weapons.find(equipped)-1
+            if prev_item < 0:
+                prev_item = len(weapons)-1
+            equipped = weapons[prev_item]
+        print(equipped)
+            
     if event.is_action_pressed('zoom_out'):
-        print('next weapon')
+        if len(weapons) >= 2:
+            var next_item = weapons.find(equipped)+1
+            if next_item > len(weapons)-1:
+                next_item = 0
+            equipped = weapons[next_item]
+        print(equipped)
 
 #one function for all item pickups, will have to be changed a bit for other items
 func pickup_item(item):
     weapons.append(item)
+    if len(weapons) == 1:
+        equipped = item
     emit_signal(item +'_picked_up')
 
 func _on_World_Sword_body_entered(body):
@@ -78,6 +92,21 @@ func attack():
                 if abs(angle_to_enemy) < 202.5 && abs(angle_to_enemy) > 157.5:
                     print('hit')
 
+    if equipped == 'dagger':
+        for node in get_tree().get_nodes_in_group('enemy'):
+            if position.distance_to(node.position) < 40:
+                var direction = (get_global_mouse_position()-position).normalized()
+                var angle_to_enemy = rad2deg(direction.angle_to(node.direction))
+                    #print(direction)
+                    #print(node.direction)
+                print(abs(angle_to_enemy))
+                    #I very clearly fucked this up but it works
+                if abs(angle_to_enemy) < 202.5 && abs(angle_to_enemy) > 157.5:
+                    print('hit')
+
+    if equipped == 'fire':
+        var Fire = preload('res://Scenes/Player/Fire.tscn')
+        emit_signal('fire', Fire, rad2deg(current_angle()), position)
 
 func _process(delta):
     # The player's movement vector.
