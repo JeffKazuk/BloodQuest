@@ -1,10 +1,16 @@
 extends KinematicBody2D
 
 export var speed = 400  # How fast the player will move (pixels/sec).
+
 var has_stick = false
 var has_sword = false
 var has_fire = false
 var has_dagger = false
+
+signal stick_picked_up
+signal sword_picked_up
+signal fire_picked_up
+signal stick_picked_up
 
 func _ready():
     #position.x = 400
@@ -38,6 +44,10 @@ func update_direction():
         $AnimatedSprite.animation = 'W'
 
 #function thats called every delta second
+
+func pickup_stick():
+    pass
+
 func _process(delta):
     var velocity = Vector2()  # The player's movement vector.
     update_direction()
