@@ -3,8 +3,10 @@ extends Area2D
 export var speed = 400  # How fast the player will move (pixels/sec).
 
 func update_direction():
+    #Gets the location of the mouse in radians
     var angle = get_global_mouse_position().angle_to_point(position)
-    print(angle)
+    #Changes the looking direction of the character to roughly
+    #where the mouse is
     if angle > PI/8 && angle < 3*PI/8:
         $AnimatedSprite.animation = 'SE'
     if angle > 3*PI/8 && angle < 5*PI/8:
