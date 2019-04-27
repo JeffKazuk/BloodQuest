@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 export var speed = 400  # How fast the player will move (pixels/sec).
+export var direction = 0;
 
 var weapons = []
 var equipped = ''
@@ -69,14 +70,14 @@ func attack():
     if equipped == 'sword':
         for node in get_tree().get_nodes_in_group('enemy'):
             if position.distance_to(node.position) < 70:
-                var direction = (get_global_mouse_position()-position).normalized()
+                
                 var angle_to_enemy = rad2deg(direction.angle_to(node.direction))
                 #print(direction)
                 #print(node.direction)
                 print(abs(angle_to_enemy))
                 #I very clearly fucked this up but it works
                 if abs(angle_to_enemy) < 202.5 && abs(angle_to_enemy) > 157.5:
-                    print('hit')
+                    print('hit enemy')
 
 
 func _process(delta):
@@ -103,6 +104,7 @@ func _process(delta):
         if len(weapons) >= 4:
             equipped = weapons[3]
     update_direction()
+    direction = (get_global_mouse_position()-position).normalized()
     #print(equipped)
 
     if velocity.length() > 0: #if the length of the vector is greater than 0

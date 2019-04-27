@@ -7,9 +7,10 @@
 [node name="OverWorld" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 3.51611, 0 )
 
 [node name="World Sword" parent="." instance=ExtResource( 2 )]
-position = Vector2( 170, 0 )
+position = Vector2( 587.429, 188.683 )
 
 [node name="SwordBoss" parent="." groups=[
 "enemy",
