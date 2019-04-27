@@ -48,7 +48,7 @@ func update_direction():
         facing = '135'
     if angle > -PI && angle < -7*PI/8:
         facing = '180'
-
+    print(facing)
     $AnimatedSprite.animation = facing
     
 #use _input for any inputs that need to be instant (mostly just mouse)
