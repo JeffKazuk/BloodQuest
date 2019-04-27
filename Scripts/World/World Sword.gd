@@ -9,3 +9,4 @@ func _process(delta):
 
 func _on_Player_sword_picked_up():
 	hide()
+	$CollisionShape2D.call_deferred('set_disabled', true)
