@@ -9,15 +9,14 @@
 script = ExtResource( 1 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1, 0 )
 
 [node name="World Sword" parent="." instance=ExtResource( 3 )]
 visible = false
 position = Vector2( 170, 0 )
 
-[node name="fireBoss" parent="." groups=[
-"enemy",
-] instance=ExtResource( 4 )]
-position = Vector2( 400.508, 355.085 )
+[node name="fireBoss" parent="." instance=ExtResource( 4 )]
+position = Vector2( -110, 180 )
 
 [connection signal="fire" from="Player" to="." method="_on_Player_fire"]
 [connection signal="sword_picked_up" from="Player" to="World Sword" method="_on_Player_sword_picked_up"]
