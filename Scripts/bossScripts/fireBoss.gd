@@ -12,6 +12,7 @@ var distance = 0
 func _ready():
 	set_physics_process(true)
 	player = get_parent().find_node("Player")
+	$Area2D.connect('area_entered', self, '_on_hit_by_fireball')
 	#print(target)
 
 func _physics_process(delta):
@@ -54,6 +55,10 @@ func _process(delta):
 		facing = 'W'
 
 	$AnimatedSprite.animation = facing
+
+func _on_hit_by_fireball(area):
+	$Health.take_damage(7)
+	print('gadersk')
 
 func current_angle():
 	angle_to_player = rad2deg(position.angle_to_point(player.position))

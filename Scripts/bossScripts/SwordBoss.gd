@@ -16,6 +16,7 @@ func _ready():
 	set_physics_process(true)
 	$Health.connect('health_depleted', self, 'dead')
 	player = get_parent().find_node("Player")
+	$Area2D.connect('area_entered', self, '_on_hit_by_fireball')
 	#print(target)
 
 func _physics_process(delta):
@@ -70,6 +71,11 @@ func current_angle():
 	angle_to_player = rad2deg(position.angle_to_point(player.position))
 	#print(angle_to_player)
 	return angle_to_player
+
+func _on_hit_by_fireball(area):
+	$Health.take_damage(7)
+	print('gadersk')
+
 
 func attack():
     print("Enemy is attacking")
