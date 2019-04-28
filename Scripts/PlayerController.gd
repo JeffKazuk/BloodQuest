@@ -17,6 +17,7 @@ signal sword_picked_up
 signal fire_picked_up
 signal dagger_picked_up
 signal fire(Fire, rotation, position)
+signal hit_enemy(damage)
 
 func _ready():
     #position.x = 400
@@ -138,7 +139,8 @@ func attack(spot):
                 print(abs(angle_to_enemy))
                 #I very clearly fucked this up but it works
                 if abs(angle_to_enemy) < 202.5 && abs(angle_to_enemy) > 157.5:
-                    print('hit enemy')
+                    emit_signal('hit_enemy', 50)
+                    # print('hit enemy')
 
     if equipped == 'sword':
         for node in get_tree().get_nodes_in_group('enemy'):
@@ -150,7 +152,8 @@ func attack(spot):
                 print(abs(angle_to_enemy))
                 #I very clearly fucked this up but it works
                 if abs(angle_to_enemy) < 202.5 && abs(angle_to_enemy) > 157.5:
-                    print('hit enemy')
+                    emit_signal('hit_enemy', 30)
+                    # print('hit enemy')
 
     if equipped == 'dagger':
         for node in get_tree().get_nodes_in_group('enemy'):
@@ -162,7 +165,8 @@ func attack(spot):
                 print(abs(angle_to_enemy))
                     #I very clearly fucked this up but it works
                 if abs(angle_to_enemy) < 202.5 && abs(angle_to_enemy) > 157.5:
-                    print('hit')
+                    emit_signal('hit_enemy', 30)
+                    # print('hit enemy')
 
     if equipped == 'fire':
         if fire_timer <= 0:
@@ -220,7 +224,7 @@ func _on_Hitbox_area_entered(area):
     
 func _on_bootsBoss_hit_player(velocity):
     print('Das Boot')
-    $Health.take_damage(50)
+    $Health.take_damage(10)
     knockback = velocity
     speed = 800
     frame_timer = 5

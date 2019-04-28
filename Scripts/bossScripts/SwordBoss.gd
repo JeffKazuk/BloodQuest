@@ -8,10 +8,14 @@ var angle_to_player
 var player
 var distance =0
 var attack_timer = 80000
+var sword
+var Sword
 signal hit_player
 
 func _ready():
 	set_physics_process(true)
+	$Health.connect('health_depleted', self, 'dead')
+	player = get_parent().find_node("Player")
 	#print(target)
 
 func _physics_process(delta):
@@ -69,7 +73,6 @@ func current_angle():
 
 func attack():
     print("Enemy is attacking")
-    var player = get_parent().find_node("Player")
     if position.distance_to(player.global_position) < 150:
         #velocity = (player.global_position - global_position).normalized()
         #var angle_to_player = rad2deg(velocity.angle_to(player.velocity))
@@ -79,4 +82,16 @@ func attack():
                 #I very clearly fucked this up but it works
         #if abs(angle_to_player) < 202.5 && abs(angle_to_player) > 157.5:
         emit_signal('hit_player')
+
+func _get_hit(damage):
+	print('yeowch')
+	$Health.take_damage(damage)
+
+func dead():
+	get_parent().get_node('SwordBossActivator').spawnable = false
+	Sword = preload('res://Scenes/World/World Sword.tscn')
+	sword = Sword.instance()
+	get_parent().add_child(sword)
+	sword.position = position
+	get_parent().remove_child(self)
 
