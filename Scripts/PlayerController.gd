@@ -10,6 +10,7 @@ var velocity
 var dash_timer = 0
 var frame_timer = 0
 var fire_timer = 0
+var knockback = null
 
 signal stick_picked_up
 signal sword_picked_up
@@ -97,6 +98,8 @@ func _on_World_Dagger_body_entered(body):
     pickup_item('dagger')
     $Health.take_damage(10)
 
+
+    
 func dash():
     var angle = current_angle()
     var rot
@@ -200,14 +203,23 @@ func _process(delta):
     update_direction()
     direction = (get_global_mouse_position()-position).normalized()
     #print(equipped)
-
-    if velocity.length() > 0: #if the length of the vector is greater than 0
+    if knockback != null:
+        velocity = knockback.normalized() * speed
+        move_and_collide(velocity*delta)
+    elif velocity.length() > 0: #if the length of the vector is greater than 0
         velocity = velocity.normalized() * speed #sets the player's velocity
     move_and_collide(velocity*delta)#moves the player
     frame_timer -= 1
     if frame_timer <= 0:
         speed = 400
+        knockback = null
 
 #detect and take damage from fireballs
 func _on_Hitbox_area_entered(area):
-	$Health.take_damage(10)
+    $Health.take_damage(10)
+    
+func _on_bootsBoss_hit_player(velocity):
+    print('hit')
+    knockback = velocity
+    speed = 800
+    frame_timer = 5
