@@ -23,7 +23,7 @@ func _on_BootsBossActivator_body_entered(body):
 func _on_BootsBossActivator_body_exited(body):
 	#get_parent().remove_child(boss)
 	if spawnable:
-		boss.queue_free()
+		get_parent().remove_child(boss)
 	get_parent().get_node('Camera2D').target_name = 'Player'
 	get_parent().get_node('Camera2D').zoom.x = 1
 	get_parent().get_node('Camera2D').zoom.y = 1

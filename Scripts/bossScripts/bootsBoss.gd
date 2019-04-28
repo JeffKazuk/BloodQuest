@@ -17,6 +17,7 @@ func _ready():
 	set_physics_process(true)
 	player = get_parent().find_node("Player")
 	$Health.connect('health_depleted', self, 'dead')
+	$Area2D2.connect('area_entered', self, '_on_hit_by_fireball')
 	#print(target)
 
 func _physics_process(delta):
@@ -80,6 +81,10 @@ func attack():
 	frame_timer = .5
 	velocity = (player.global_position - global_position).normalized()
 	speed = 40
+
+func _on_hit_by_fireball(area):
+	$Health.take_damage(10)
+	print('gadersk')
 
 func _on_Area2D_body_entered(body):
 	emit_signal('hit_player', velocity)

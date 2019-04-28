@@ -82,4 +82,12 @@ shape = SubResource( 2 )
 [node name="Health" type="Node" parent="."]
 script = ExtResource( 10 )
 
+[node name="Area2D2" type="Area2D" parent="."]
+collision_layer = 1024
+collision_mask = 1024
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Area2D2"]
+scale = Vector2( 3, 3 )
+shape = SubResource( 2 )
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
