@@ -3,7 +3,7 @@ extends KinematicBody2D
 
 var speed = 2
 var velocity=0
-var timer = .5
+var timer = rand_range(1,3)
 var angle_to_player = 0;
 signal fire (Fire, rotation, position)
 var player
@@ -29,7 +29,7 @@ func _process(delta):
 	timer -= delta
 	if timer<=0:
 		attack()
-		timer = 0.5
+		timer = rand_range(1,3)
 	#print(rotation)
 	var facing = 'E'
 	var angle = velocity.angle()
