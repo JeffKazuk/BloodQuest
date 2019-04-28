@@ -16,6 +16,7 @@ func _ready():
 	set_physics_process(true)
 	$Health.connect('health_depleted', self, 'dead')
 	player = get_parent().find_node("Player")
+	$Area2D.connect('area_entered', self, '_on_hit_by_fireball')
 	#print(target)
 
 func _physics_process(delta):
@@ -71,6 +72,11 @@ func current_angle():
 	#print(angle_to_player)
 	return angle_to_player
 
+func _on_hit_by_fireball(area):
+	$Health.take_damage(7)
+	print('gadersk')
+
+
 func attack():
     print("Enemy is attacking")
     if position.distance_to(player.global_position) < 150:
@@ -93,5 +99,5 @@ func dead():
 	sword = Sword.instance()
 	get_parent().add_child(sword)
 	sword.position = position
-	get_parent().remove_child(self)
+	self.queue_free()
 
