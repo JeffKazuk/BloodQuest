@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scripts/World/OverWorld.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/World/World Sword.tscn" type="PackedScene" id=2]
@@ -10,7 +10,6 @@
 [ext_resource path="res://Scenes/Activators/BootsBossActivator.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Scenes/Camera Locations/SwordBossCamera.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Scenes/Activators/SwordBossActivator.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Scenes/UI/Fade.tscn" type="PackedScene" id=11]
 
 [node name="OverWorld" type="Node2D"]
 script = ExtResource( 1 )
@@ -51,8 +50,6 @@ position = Vector2( 23060, 16120 )
 
 [node name="SwordBossActivator" parent="." instance=ExtResource( 10 )]
 position = Vector2( 22990, 16100 )
-
-[node name="Fade" parent="." instance=ExtResource( 11 )]
 
 [connection signal="body_entered" from="World Sword" to="Player" method="_on_World_Sword_body_entered"]
 [connection signal="fire" from="Player" to="." method="_on_Player_fire"]
