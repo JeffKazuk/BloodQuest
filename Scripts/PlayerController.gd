@@ -219,7 +219,16 @@ func _on_Hitbox_area_entered(area):
     $Health.take_damage(10)
     
 func _on_bootsBoss_hit_player(velocity):
-    print('hit')
+    print('Das Boot')
+    $Health.take_damage(50)
     knockback = velocity
     speed = 800
     frame_timer = 5
+
+func _on_SwordBoss_hit_player():
+    print('Get Fukt')
+    $Health.take_damage(20)
+
+func _on_Health_health_depleted():
+    print('dead')
+    get_parent().queue_free()

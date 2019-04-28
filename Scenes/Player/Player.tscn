@@ -2,13 +2,13 @@
 
 [ext_resource path="res://Scripts/PlayerController.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/sprite_1.png" type="Texture" id=2]
-[ext_resource path="res://Sprites/sprite_0.png" type="Texture" id=3]
-[ext_resource path="res://Sprites/sprite_3.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/sprite_6.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/sprite_5.png" type="Texture" id=4]
 [ext_resource path="res://Sprites/sprite_4.png" type="Texture" id=5]
-[ext_resource path="res://Sprites/sprite_6.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/sprite_7.png" type="Texture" id=6]
 [ext_resource path="res://Sprites/sprite_2.png" type="Texture" id=7]
-[ext_resource path="res://Sprites/sprite_5.png" type="Texture" id=8]
-[ext_resource path="res://Sprites/sprite_7.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/sprite_3.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/sprite_0.png" type="Texture" id=9]
 [ext_resource path="res://Scripts/Health.gd" type="Script" id=10]
 
 [sub_resource type="SpriteFrames" id=1]
@@ -20,12 +20,12 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 3 ) ],
 "loop": true,
-"name": "0",
+"name": "270",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 4 ) ],
 "loop": true,
-"name": "135",
+"name": "225",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 5 ) ],
@@ -35,7 +35,7 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 6 ) ],
 "loop": true,
-"name": "270",
+"name": "315",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 7 ) ],
@@ -45,12 +45,12 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 8 ) ],
 "loop": true,
-"name": "225",
+"name": "135",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 9 ) ],
 "loop": true,
-"name": "315",
+"name": "0",
 "speed": 5.0
 } ]
 
@@ -73,11 +73,13 @@ shape = SubResource( 2 )
 script = ExtResource( 10 )
 
 [node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 2048
 collision_mask = 2048
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Hitbox"]
 scale = Vector2( 3, 3 )
 shape = SubResource( 2 )
 
+[connection signal="health_depleted" from="Health" to="." method="_on_Health_health_depleted"]
 [connection signal="area_entered" from="Hitbox" to="." method="_on_Hitbox_area_entered"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_Hitbox_body_entered"]

@@ -15,6 +15,7 @@ signal hit_player(velocity)
 func _ready():
 	set_physics_process(true)
 	player = get_parent().find_node("Player")
+	
 	#print(target)
 
 func _physics_process(delta):

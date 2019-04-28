@@ -65,15 +65,4 @@ func attack():
     var player = get_parent().find_node("Player")
     var Fire = preload('res://Scenes/Bosses/fireBoss/MeanGuyFire.tscn')
     emit_signal('fire', Fire, velocity.angle(), position)
-    if position.distance_to(player.global_position) < 70:
-        #velocity = (player.global_position - global_position).normalized()
-        
-                #print(velocity)
-                #print(node.velocity)
-        print(abs(current_angle()))
-                #I very clearly fucked this up but it works
-        if abs(current_angle()) < 202.5 && abs(current_angle()) > 157.5:
-            print('hit player')
-        
-        #print(deg2rad(float(facing)))
 
