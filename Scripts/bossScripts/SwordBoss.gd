@@ -93,5 +93,5 @@ func dead():
 	sword = Sword.instance()
 	get_parent().add_child(sword)
 	sword.position = position
-	get_parent().remove_child(self)
+	self.queue_free()
 

@@ -1,8 +1,10 @@
 extends KinematicBody2D
 
-export var speed = 400  # How fast the player will move (pixels/sec).
+
+export var default_speed = 400
 export var direction = 0;
 
+var speed = 400  # How fast the player will move (pixels/sec).
 var weapons = ['sword', 'stick', 'fire']
 var equipped = ''
 var facing
@@ -16,6 +18,7 @@ signal stick_picked_up
 signal sword_picked_up
 signal fire_picked_up
 signal dagger_picked_up
+signal boots_picked_up
 signal fire(Fire, rotation, position)
 signal hit_enemy(damage)
 
@@ -99,6 +102,9 @@ func _on_World_Dagger_body_entered(body):
     pickup_item('dagger')
     $Health.take_damage(10)
 
+func _on_World_Boots_body_entered(body):
+    pickup_item('boots')
+    default_speed = 800
 
     
 func dash():
@@ -215,7 +221,7 @@ func _process(delta):
     move_and_collide(velocity*delta)#moves the player
     frame_timer -= 1
     if frame_timer <= 0:
-        speed = 400
+        speed = default_speed
         knockback = null
 
 #detect and take damage from fireballs

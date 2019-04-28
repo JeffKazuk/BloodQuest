@@ -9,13 +9,14 @@ var distance = 0
 var frame_timer = 10000
 var other_timer = 10000
 var attacking = false
+var boots
 
 signal hit_player(velocity)
 
 func _ready():
 	set_physics_process(true)
 	player = get_parent().find_node("Player")
-	
+	$Health.connect('health_depleted', self, 'dead')
 	#print(target)
 
 func _physics_process(delta):
@@ -82,3 +83,15 @@ func attack():
 
 func _on_Area2D_body_entered(body):
 	emit_signal('hit_player', velocity)
+
+func _get_hit(damage):
+	print('yeowch')
+	$Health.take_damage(damage)
+
+func dead():
+	get_parent().get_node('BootsBossActivator').spawnable = false
+	boots = preload('res://Scenes/World/World Boots.tscn')
+	boots = boots.instance()
+	get_parent().add_child(boots)
+	boots.position = position
+	self.queue_free()
