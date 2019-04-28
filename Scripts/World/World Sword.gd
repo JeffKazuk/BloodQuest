@@ -2,7 +2,10 @@ extends Area2D
 
 
 func _ready():
-	pass # Replace with function body.
+	var player = get_parent().get_node('Player')
+	player.connect('sword_picked_up', self, '_on_Player_sword_picked_up')
+	self.connect('body_entered', player, '_on_World_Sword_body_entered')
+	
 
 func _process(delta):
 	pass
