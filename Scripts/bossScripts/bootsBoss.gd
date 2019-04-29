@@ -74,6 +74,7 @@ func current_angle():
 	return angle_to_player
 
 func attack():
+	$dash.play()
 	attacking = true
 	print("Enemy is attacking")
 	var player = get_parent().find_node("Player")

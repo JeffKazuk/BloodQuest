@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/bossScripts/finalBoss.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/20170908_125902.png" type="Texture" id=2]
 [ext_resource path="res://Scripts/Health.gd" type="Script" id=3]
+[ext_resource path="res://audio/teleport.wav" type="AudioStream" id=4]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -13,7 +14,17 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 2 ) ],
 "loop": true,
+"name": "NE",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
 "name": "SW",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "NW",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 2 ) ],
@@ -23,7 +34,7 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 2 ) ],
 "loop": true,
-"name": "NE",
+"name": "S",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 2 ) ],
@@ -33,17 +44,7 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 2 ) ],
 "loop": true,
-"name": "S",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 2 ) ],
-"loop": true,
 "name": "E",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 2 ) ],
-"loop": true,
-"name": "NW",
 "speed": 5.0
 } ]
 
@@ -75,4 +76,8 @@ collision_mask = 1024
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
 scale = Vector2( 3, 3 )
 shape = SubResource( 2 )
+
+[node name="teleport" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = 9.455
 
