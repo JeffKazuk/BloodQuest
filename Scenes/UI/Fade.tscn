@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scenes/UI/Fade.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/blood-quest_wordmark.png" type="Texture" id=2]
 [ext_resource path="res://Sprites/blood-quest_play.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/TinyKnight/Sleeping.png" type="Texture" id=4]
 
 [sub_resource type="Animation" id=1]
 resource_name = "fadeAnim"
@@ -78,6 +79,18 @@ tracks/5/keys = {
 "update": 0,
 "values": [ Vector2( 0.5, 0.5 ) ]
 }
+tracks/6/type = "value"
+tracks/6/path = NodePath("../../Sprite:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
 
 [sub_resource type="Animation" id=2]
 resource_name = "fadeout"
@@ -107,24 +120,36 @@ anchor_bottom = 1.0
 [node name="ColorRect" type="ColorRect" parent="MarginContainer"]
 margin_right = 1024.0
 margin_bottom = 600.0
-color = Color( 0, 0, 0, 0.745098 )
+color = Color( 0, 0, 0, 0.490196 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="MarginContainer/ColorRect"]
 autoplay = "fadeAnim"
 anims/fadeAnim = SubResource( 1 )
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer"]
-modulate = Color( 1, 1, 1, 0.5 )
-margin_right = 1024.0
-margin_bottom = 600.0
+margin_left = 256.0
+margin_top = 50.0
+margin_right = 1280.0
+margin_bottom = 650.0
+rect_scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 2 )
 
 [node name="TextureButton" type="TextureButton" parent="MarginContainer"]
-margin_right = 1024.0
-margin_bottom = 600.0
+margin_left = 256.0
+margin_top = 400.0
+margin_right = 1280.0
+margin_bottom = 1000.0
+rect_scale = Vector2( 0.5, 0.5 )
 texture_normal = ExtResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="MarginContainer"]
 anims/fadeout = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 502.724, 298.962 )
+rotation = -0.579449
+scale = Vector2( 0.5, 0.5 )
+z_index = -1
+texture = ExtResource( 4 )
 
 [connection signal="pressed" from="MarginContainer/TextureButton" to="." method="_on_TextureButton_pressed"]
