@@ -3,7 +3,7 @@
 [ext_resource path="res://Sprites/dirtTiles.png" type="Texture" id=1]
 
 [resource]
-0/name = "dirtTilesAtlas.png 0"
+0/name = "dirtTilesAuto.png 0"
 0/texture = ExtResource( 1 )
 0/tex_offset = Vector2( 0, 0 )
 0/modulate = Color( 1, 1, 1, 1 )
@@ -41,7 +41,7 @@
 1/navigation_offset = Vector2( 0, 0 )
 1/shapes = [  ]
 1/z_index = 0
-2/name = "dirtTiles.png 2"
+2/name = "dirtTilesAtlas.png 2"
 2/texture = ExtResource( 1 )
 2/tex_offset = Vector2( 0, 0 )
 2/modulate = Color( 1, 1, 1, 1 )
