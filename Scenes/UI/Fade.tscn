@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/UI/Fade.gd" type="Script" id=1]
-[ext_resource path="res://Sprites/blood-quest_wordmark.png" type="Texture" id=2]
-[ext_resource path="res://Sprites/blood-quest_play.png" type="Texture" id=3]
-[ext_resource path="res://Sprites/TinyKnight/Sleeping.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/blood-quest-ALT.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/TinyKnight/Sleeping.png" type="Texture" id=3]
 
 [sub_resource type="Animation" id=1]
 resource_name = "fadeAnim"
@@ -56,36 +55,12 @@ tracks/3/keys = {
 "values": [ Vector2( 256, 50 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("../TextureButton:rect_position")
+tracks/4/path = NodePath("../../Sprite:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( -0.1 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 256, 400 ) ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("../TextureButton:rect_scale")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( -0.1 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 0.5, 0.5 ) ]
-}
-tracks/6/type = "value"
-tracks/6/path = NodePath("../../Sprite:modulate")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
 "times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
@@ -127,29 +102,23 @@ autoplay = "fadeAnim"
 anims/fadeAnim = SubResource( 1 )
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer"]
-margin_left = 256.0
-margin_top = 50.0
-margin_right = 1280.0
-margin_bottom = 650.0
-rect_scale = Vector2( 0.5, 0.5 )
+margin_right = 1024.0
+margin_bottom = 600.0
 texture = ExtResource( 2 )
-
-[node name="TextureButton" type="TextureButton" parent="MarginContainer"]
-margin_left = 256.0
-margin_top = 400.0
-margin_right = 1280.0
-margin_bottom = 1000.0
-rect_scale = Vector2( 0.5, 0.5 )
-texture_normal = ExtResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="MarginContainer"]
 anims/fadeout = SubResource( 2 )
+
+[node name="Button" type="Button" parent="MarginContainer"]
+margin_right = 1024.0
+margin_bottom = 600.0
+flat = true
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 502.724, 298.962 )
 rotation = -0.579449
 scale = Vector2( 0.5, 0.5 )
 z_index = -1
-texture = ExtResource( 4 )
+texture = ExtResource( 3 )
 
-[connection signal="pressed" from="MarginContainer/TextureButton" to="." method="_on_TextureButton_pressed"]
+[connection signal="pressed" from="MarginContainer/Button" to="." method="_on_Button_pressed"]
