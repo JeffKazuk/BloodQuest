@@ -4,21 +4,21 @@ var Boss
 var boss
 var Player
 var audioMain
-var audioFire
+var audioFinal
 export var spawnable = true
 
 func _ready():
     Boss = preload('res://Scenes/Bosses/finalBoss/finalBoss.tscn')
     boss = Boss.instance()
     Player = get_parent().find_node('Player')
-    # audioMain = get_parent().find_node('AudioMain')
-    # audioFire = get_parent().find_node('AudioFire')
+    audioMain = get_parent().find_node('AudioMain')
+    audioFinal = get_parent().find_node('AudioFinal')
     self.connect('body_entered', self, '_on_FinalBossActivator_body_entered')
     self.connect('body_exited', self, '_on_FinalBossActivator_body_exited')
-    # self.connect('body_entered',audioMain,"boss")
-    # self.connect('body_exited',audioMain,"notBoss")
-    # self.connect('body_entered',audioFire,"boss")
-    # self.connect('body_exited',audioFire,"notBoss")
+    self.connect('body_entered',audioMain,"boss")
+    self.connect('body_exited',audioMain,"notBoss")
+    self.connect('body_entered',audioFinal,"boss")
+    self.connect('body_exited',audioFinal,"notBoss")
 
 
 func _on_FinalBossActivator_body_entered(body):

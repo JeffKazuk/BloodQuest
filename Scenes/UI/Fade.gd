@@ -16,7 +16,7 @@ func _process(delta):
 	timer -= delta
 
 
-func _on_TextureButton_pressed():
+
+func _on_Button_pressed():
 	get_tree().paused = false
 	self.queue_free()
-	
