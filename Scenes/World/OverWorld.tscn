@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Scripts/World/OverWorld.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=2]
@@ -20,6 +20,8 @@
 [ext_resource path="res://Scenes/Crate.tscn" type="PackedScene" id=18]
 [ext_resource path="res://Scenes/shield_spawn_point.tscn" type="PackedScene" id=19]
 [ext_resource path="res://Scenes/Activators/Crate_activator.tscn" type="PackedScene" id=20]
+[ext_resource path="res://Scenes/Activators/cave_activator.tscn" type="PackedScene" id=21]
+[ext_resource path="res://Scenes/World/World Stick.tscn" type="PackedScene" id=22]
 
 [node name="OverWorld" type="Node2D"]
 script = ExtResource( 1 )
@@ -154,6 +156,15 @@ position = Vector2( 24210, 17950 )
 
 [node name="Crate_activator" parent="." instance=ExtResource( 20 )]
 position = Vector2( 24090, 18080 )
+
+[node name="cave_activator" parent="." instance=ExtResource( 21 )]
+position = Vector2( 17780, 17360 )
+scale = Vector2( 2, 2 )
+collision_layer = 0
+collision_mask = 16
+
+[node name="World Sword" parent="." instance=ExtResource( 22 )]
+position = Vector2( 19840, 18540 )
 
 [connection signal="fire" from="Player" to="." method="_on_Player_fire"]
 [connection signal="health_changed" from="Player/Health" to="Camera2D/Gameplay UI" method="_on_Health_health_changed"]
