@@ -9,6 +9,7 @@ signal mana (Mana, rotation, position)
 var player
 var distance = 0
 var teleport_timer = 5
+var gold_stick
 
 
 func _ready():
@@ -72,7 +73,7 @@ func attack():
     emit_signal('mana', Mana, velocity.angle(), position)
 
 func dead():
-    gold_stick = preload('')
+    gold_stick = preload('res://Scenes/World/World Gold Stick.tscn')
     get_parent().get_node('FinalBossArenaRoof').queue_free()
     get_parent().get_node('Camera2D').target_name = 'stick_podium'
     get_parent().get_node('FinalBossActivator').spawnable = false
