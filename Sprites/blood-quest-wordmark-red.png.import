@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/golden-stick.png-f39e408548c0b1916490469edeeeb475.stex"
+path="res://.import/blood-quest-wordmark-red.png-cc2f3fb5b53f2ad49807cd9af7243017.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/golden-stick.png"
-dest_files=[ "res://.import/golden-stick.png-f39e408548c0b1916490469edeeeb475.stex" ]
+source_file="res://Sprites/blood-quest-wordmark-red.png"
+dest_files=[ "res://.import/blood-quest-wordmark-red.png-cc2f3fb5b53f2ad49807cd9af7243017.stex" ]
 
 [params]
 
@@ -20,15 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-<<<<<<< HEAD
 flags/filter=true
-=======
-<<<<<<< HEAD
-flags/filter=false
-=======
-flags/filter=true
->>>>>>> master
->>>>>>> master
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

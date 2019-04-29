@@ -72,5 +72,8 @@ func attack():
     emit_signal('mana', Mana, velocity.angle(), position)
 
 func dead():
-	get_parent().get_node('FinalBossActivator').spawnable = false
-	self.queue_free()
+    gold_stick = preload('')
+    get_parent().get_node('FinalBossArenaRoof').queue_free()
+    get_parent().get_node('Camera2D').target_name = 'stick_podium'
+    get_parent().get_node('FinalBossActivator').spawnable = false
+    self.queue_free()
