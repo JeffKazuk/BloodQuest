@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Scripts/World/OverWorld.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=2]
@@ -23,6 +23,7 @@
 [ext_resource path="res://Scenes/World/World Stick.tscn" type="PackedScene" id=21]
 [ext_resource path="res://Scenes/Camera Locations/FireBossCamera.tscn" type="PackedScene" id=22]
 [ext_resource path="res://Scenes/Activators/FireBossActivator.tscn" type="PackedScene" id=23]
+[ext_resource path="res://Scenes/World/ButtonPuzzle.tscn" type="PackedScene" id=24]
 
 [node name="OverWorld" type="Node2D"]
 script = ExtResource( 1 )
@@ -150,6 +151,9 @@ position = Vector2( 15420, 17010 )
 [node name="FireBossActivator" parent="." instance=ExtResource( 23 )]
 collision_layer = 0
 collision_mask = 16
+
+[node name="ButtonPuzzle" parent="." instance=ExtResource( 24 )]
+position = Vector2( 16300, 18360 )
 
 [connection signal="fire" from="Player" to="." method="_on_Player_fire"]
 [connection signal="health_changed" from="Player/Health" to="Camera2D/Gameplay UI" method="_on_Health_health_changed"]

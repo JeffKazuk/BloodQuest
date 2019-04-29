@@ -13,6 +13,7 @@ func button1_depressed(body):
     if not $Button1.pressed:
         player_pattern.append(1)
         $Button1.get_node('AnimatedSprite').frame = 1
+        $Button1.pressed = true
     if len(player_pattern) == 4:
         check()
     
@@ -21,6 +22,7 @@ func button2_depressed(body):
     if not $Button2.pressed:
         player_pattern.append(2)
         $Button2.get_node('AnimatedSprite').frame = 1
+        $Button2.pressed = true
     if len(player_pattern) == 4:
         check()
     
@@ -29,6 +31,7 @@ func button3_depressed(body):
     if not $Button3.pressed:
         player_pattern.append(3)
         $Button3.get_node('AnimatedSprite').frame = 1
+        $Button3.pressed = true
     if len(player_pattern) == 4:
         check()
     
@@ -37,6 +40,7 @@ func button4_depressed(body):
     if not $Button4.pressed:
         player_pattern.append(4)
         $Button4.get_node('AnimatedSprite').frame = 1
+        $Button4.pressed = true
     if len(player_pattern) == 4:
         check()
     
@@ -47,4 +51,11 @@ func check():
         $Button2.get_node('AnimatedSprite').frame = 0
         $Button3.get_node('AnimatedSprite').frame = 0
         $Button4.get_node('AnimatedSprite').frame = 0
-
+        $Button1.pressed = false
+        $Button2.pressed = false
+        $Button3.pressed = false
+        $Button4.pressed = false
+        player_pattern.clear()
+    elif player_pattern == pattern:
+        #drop the dagger
+        pass
