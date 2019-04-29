@@ -57,5 +57,7 @@ func check():
         $Button4.pressed = false
         player_pattern.clear()
     elif player_pattern == pattern:
-        #drop the dagger
-        pass
+        var dagger = preload('res://Scenes/World/World Dagger.tscn')
+        dagger = dagger.instance()
+        get_parent().add_child(dagger)
+        dagger.position = position
