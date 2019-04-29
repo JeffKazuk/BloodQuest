@@ -2,7 +2,7 @@ extends TextureRect
 
 var player
 var stick = load("res://Sprites/Stick.png")
-var sword = load("res://Sprites/sword.png")
+var sword = load("res://Sprites/Sword1.png")
 var fire = load("res://Sprites/Test fire.png")
 var dagger = load("res://Sprites/Dagger.png")
 
