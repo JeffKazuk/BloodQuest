@@ -59,7 +59,7 @@ tile_data = PoolIntArray( -6094855, 1, 196610, -6094854, 1, 196610, -6094853, 1,
 position = Vector2( 22020, 19940 )
 
 [node name="BootsBossActivator" parent="." instance=ExtResource( 7 )]
-position = Vector2( 22160, 20140 )
+position = Vector2( 22160, 20035 )
 
 [node name="SwordBossCamera" parent="." instance=ExtResource( 8 )]
 position = Vector2( 23060, 16120 )
@@ -67,7 +67,7 @@ position = Vector2( 23060, 16120 )
 [node name="AudioSword" parent="." instance=ExtResource( 9 )]
 
 [node name="SwordBossActivator" parent="." instance=ExtResource( 10 )]
-position = Vector2( 22990, 16100 )
+position = Vector2( 22990, 16123 )
 
 [node name="DirtTileMap" type="TileMap" parent="."]
 z_index = -2
@@ -153,7 +153,7 @@ collision_mask = 16
 position = Vector2( 19840, 18540 )
 
 [node name="FireBossCamera" parent="." instance=ExtResource( 24 )]
-position = Vector2( 15420, 17010 )
+position = Vector2( 15281, 16851 )
 
 [node name="FireBossActivator" parent="." instance=ExtResource( 25 )]
 collision_layer = 0
@@ -173,7 +173,7 @@ tile_data = PoolIntArray( 14156082, 1, 0, 14156083, 1, 1, 14156084, 1, 1, 141560
 position = Vector2( 19890, 15110 )
 
 [node name="FinalBossActivator" parent="." instance=ExtResource( 28 )]
-position = Vector2( 19730, 14230 )
+position = Vector2( 19730, 14242 )
 collision_layer = 0
 collision_mask = 16
 
