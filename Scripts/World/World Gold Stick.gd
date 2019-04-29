@@ -12,4 +12,6 @@ func _ready():
 func _on_Player_gold_stick_picked_up():
     hide()
     $CollisionShape2D.call_deferred('set_disabled', true)
-    emit_signal('win')
+    var end = preload('res://credits.tscn')
+    end = end.instance()
+    get_parent().add_child(end)

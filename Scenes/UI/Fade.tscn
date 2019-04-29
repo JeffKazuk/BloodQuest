@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scenes/UI/Fade.gd" type="Script" id=1]
-[ext_resource path="res://Sprites/blood-quest-title-white.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/blood-quest-redwhite-title.png" type="Texture" id=2]
 [ext_resource path="res://Sprites/button-white.png" type="Texture" id=3]
 [ext_resource path="res://Sprites/TinyKnight/Sleeping.png" type="Texture" id=4]
 
@@ -139,19 +139,13 @@ autoplay = "fadeAnim"
 anims/fadeAnim = SubResource( 1 )
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer"]
-margin_left = 225.0
-margin_top = 100.0
-margin_right = 1249.0
-margin_bottom = 700.0
-rect_scale = Vector2( 0.75, 0.75 )
+margin_right = 1024.0
+margin_bottom = 600.0
 texture = ExtResource( 2 )
 
 [node name="TextureRect2" type="TextureRect" parent="MarginContainer"]
-margin_left = 340.0
-margin_top = 450.0
-margin_right = 1364.0
-margin_bottom = 1050.0
-rect_scale = Vector2( 0.5, 0.5 )
+margin_right = 1024.0
+margin_bottom = 600.0
 texture = ExtResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="MarginContainer"]

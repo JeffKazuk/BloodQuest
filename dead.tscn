@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://dead.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/dead-title.png" type="Texture" id=2]
 [ext_resource path="res://Sprites/death-restart.png" type="Texture" id=3]
+[ext_resource path="res://Button.gd" type="Script" id=4]
 
 [sub_resource type="Animation" id=1]
 resource_name = "death"
@@ -110,6 +111,8 @@ texture = ExtResource( 3 )
 [node name="Button" type="Button" parent="MarginContainer"]
 margin_right = 1024.0
 margin_bottom = 600.0
+disabled = true
 flat = true
+script = ExtResource( 4 )
 
 [connection signal="pressed" from="MarginContainer/Button" to="." method="_on_Button_pressed"]
