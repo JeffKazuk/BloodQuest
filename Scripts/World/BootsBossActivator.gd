@@ -3,12 +3,20 @@ extends Area2D
 var Boss
 var boss
 var Player
+var audioMain
+var audioBoots
 export var spawnable = true
 
 func _ready():
 	Boss = preload('res://Scenes/Bosses/bootsBoss/bootsBoss.tscn')
 	boss = Boss.instance()
 	Player = get_parent().find_node('Player')
+	audioMain = get_parent().find_node('AudioMain')
+	audioBoots = get_parent().find_node('AudioBoots')
+	self.connect('body_entered',audioMain,"boss")
+	self.connect('body_exited',audioMain,"notBoss")
+	self.connect('body_entered',audioBoots,"boss")
+	self.connect('body_exited',audioBoots,"notBoss")
 	
 func _on_BootsBossActivator_body_entered(body):
 	if spawnable:
