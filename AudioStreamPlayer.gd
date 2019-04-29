@@ -3,6 +3,7 @@ extends AudioStreamPlayer
 # Declare member variables here. Examples:
 var a = -20
 var b = false
+export var speed = 5
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -13,12 +14,12 @@ func _ready():
 func _process(delta):
 	
 	if !a>=0&&!b:
-		a += delta
+		a += delta*speed
 	set_volume_db(a)
 	
 func boss(area):
 	b = true
-	a = -50
+	a = -20
 func notBoss(area):
 	b = false
 	a = -20
