@@ -152,7 +152,7 @@ collision_layer = 0
 collision_mask = 16
 
 [node name="World Sword" parent="." instance=ExtResource( 23 )]
-position = Vector2( 19840, 18540 )
+position = Vector2( 19834.9, 18566.6 )
 
 [node name="FireBossCamera" parent="." instance=ExtResource( 24 )]
 position = Vector2( 15281, 16851 )
