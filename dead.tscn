@@ -96,19 +96,14 @@ autoplay = "death"
 anims/death = SubResource( 1 )
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer"]
-margin_left = 320.0
-margin_top = 100.0
-margin_right = 1344.0
-margin_bottom = 700.0
+margin_right = 1024.0
+margin_bottom = 600.0
 rect_pivot_offset = Vector2( 1.26837, 1.10864 )
 texture = ExtResource( 2 )
 
 [node name="TextureRect2" type="TextureRect" parent="MarginContainer"]
-margin_left = 330.0
-margin_top = 300.0
-margin_right = 1354.0
-margin_bottom = 900.0
-rect_scale = Vector2( 0.75, 0.75 )
+margin_right = 1024.0
+margin_bottom = 600.0
 rect_pivot_offset = Vector2( 1.26837, 1.10864 )
 texture = ExtResource( 3 )
 
