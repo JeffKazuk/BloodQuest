@@ -14,6 +14,7 @@ var frame_timer = 0
 var fire_timer = 0
 var knockback = null
 var dashing = false
+var angle_changed = false
 
 signal stick_picked_up
 signal sword_picked_up
@@ -27,7 +28,7 @@ signal hit_enemy(damage)
 func _ready():
     #position.x = 400
     #position.y = 400
-    pass
+    $AnimatedSprite.connect('frame_changed', self, 'new_frame')
 
 func current_angle():
     return get_global_mouse_position().angle_to_point(get_position())
@@ -35,6 +36,7 @@ func current_angle():
 func update_direction():
     #Gets the location of the mouse in radians
     var angle = current_angle()
+    var last_face = facing
     #print(get_global_mouse_position())
     #print(get_position())
     #Changes the looking direction of the character to roughly
@@ -59,6 +61,8 @@ func update_direction():
     if angle > -PI && angle < -7*PI/8:
         facing = '180'
     #print(facing)
+    if last_face != facing:
+        angle_changed
     if not dashing:
         $AnimatedSprite.animation = facing
     
@@ -245,6 +249,28 @@ func _process(delta):
         speed = default_speed
         knockback = null
         dashing = false
+    
+func new_frame():
+    if $AnimatedSprite.frame == 1 || $AnimatedSprite.frame == 6:
+        $footstep.pitch_scale = rand_range(1,1.5)
+        $footstep.play()
+        # var rand_step = randi()%7+1
+        # match rand_step:
+        #     1:
+        #         $footstep1.play()
+        #     2:
+        #         $footstep2.play()
+        #     3:
+        #         $footstep3.play()
+        #     4:
+        #         $footstep4.play()
+        #     5:
+        #         $footstep5.play()
+        #     6:
+        #         $footstep6.play()
+        #     7:
+        #         $footstep7.play()
+
 
 #detect and take damage from fireballs
 func _on_Hitbox_area_entered(area):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://Scripts/World/OverWorld.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=2]
@@ -27,7 +27,8 @@
 [ext_resource path="res://Scenes/Activators/FireBossActivator.tscn" type="PackedScene" id=25]
 [ext_resource path="res://Scenes/World/ButtonPuzzle.tscn" type="PackedScene" id=26]
 [ext_resource path="res://Scenes/Camera Locations/FinalBossCamera.tscn" type="PackedScene" id=27]
-[ext_resource path="res://Scenes/Activators/FinalBossActivator.tscn" type="PackedScene" id=28]
+[ext_resource path="res://AudioFinal.tscn" type="PackedScene" id=28]
+[ext_resource path="res://Scenes/Activators/FinalBossActivator.tscn" type="PackedScene" id=29]
 
 [node name="OverWorld" type="Node2D"]
 script = ExtResource( 1 )
@@ -173,7 +174,9 @@ tile_data = PoolIntArray( 14156082, 1, 0, 14156083, 1, 1, 14156084, 1, 1, 141560
 [node name="FinalBossCamera" parent="." instance=ExtResource( 27 )]
 position = Vector2( 19890, 15110 )
 
-[node name="FinalBossActivator" parent="." instance=ExtResource( 28 )]
+[node name="AudioFinal" parent="." instance=ExtResource( 28 )]
+
+[node name="FinalBossActivator" parent="." instance=ExtResource( 29 )]
 position = Vector2( 19730, 14242 )
 collision_layer = 0
 collision_mask = 16
