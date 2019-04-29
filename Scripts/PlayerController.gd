@@ -5,7 +5,7 @@ export var default_speed = 400
 export var direction = 0;
 
 var speed = 400  # How fast the player will move (pixels/sec).
-var weapons = ['sword', 'stick', 'fire']
+var weapons = []
 var equipped = ''
 var facing
 var velocity
@@ -13,6 +13,7 @@ var dash_timer = 0
 var frame_timer = 0
 var fire_timer = 0
 var knockback = null
+var dashing = false
 
 signal stick_picked_up
 signal sword_picked_up
@@ -58,7 +59,8 @@ func update_direction():
     if angle > -PI && angle < -7*PI/8:
         facing = '180'
     #print(facing)
-    $AnimatedSprite.animation = facing
+    if not dashing:
+        $AnimatedSprite.animation = facing
     
 #use _input for any inputs that need to be instant (mostly just mouse)
 func _input(event):
@@ -115,27 +117,34 @@ func _on_World_Shield_body_entered(body):
 
     
 func dash():
+    dashing = true
     var angle = current_angle()
     var rot
     frame_timer = 5
+    $AnimatedSprite.animation = 'Dash'
     if angle > PI/8 && angle < 3*PI/8:
         rot = PI/4
     if angle > 3*PI/8 && angle < 5*PI/8:
         rot = PI/2
+        $AnimatedSprite.frame = 1
     if angle > 5*PI/8 && angle < 7*PI/8:
         rot = 3*PI/4
     if angle > 7*PI/8 && angle < PI:
         rot = PI
+        $AnimatedSprite.frame = 2
     if angle > -PI/8 && angle < PI/8:
         rot = 0
+        $AnimatedSprite.frame = 3
     if angle > -3*PI/8 && angle < -PI/8:
         rot = -PI/4
     if angle > -5*PI/8 && angle < -3*PI/8:
         rot = -PI/2
+        $AnimatedSprite.frame = 0
     if angle > -7*PI/8 && angle < -5*PI/8:
         rot = -3*PI/4
     if angle > -PI && angle < -7*PI/8:
         rot = -PI
+        $AnimatedSprite.frame = 2
     velocity.x = cos(rot)
     velocity.y = sin(rot)
     speed *= 10
@@ -234,6 +243,7 @@ func _process(delta):
     if frame_timer <= 0:
         speed = default_speed
         knockback = null
+        dashing = false
 
 #detect and take damage from fireballs
 func _on_Hitbox_area_entered(area):

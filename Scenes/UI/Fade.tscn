@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/UI/Fade.gd" type="Script" id=1]
-[ext_resource path="res://Sprites/BloodQuestTitle.png" type="Texture" id=2]
-[ext_resource path="res://Sprites/BloodQuestButton.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/blood-quest_wordmark.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/blood-quest_play.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/PlayPressed.png" type="Texture" id=4]
 
 [sub_resource type="Animation" id=1]
 resource_name = "fade"
@@ -59,7 +60,7 @@ margin_bottom = 600.0
 pause_mode = 2
 margin_right = 1030.0
 margin_bottom = 600.0
-color = Color( 0, 0, 0, 1 )
+color = Color( 0, 0, 0, 0.564706 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="MarginContainer/ColorRect"]
 pause_mode = 2
@@ -68,26 +69,26 @@ anims/fade = SubResource( 1 )
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/ColorRect"]
 pause_mode = 2
-modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -206.5
-margin_top = 50.0
-margin_right = 206.5
-margin_bottom = 90.0
+margin_left = -388.151
+margin_top = 42.1646
+margin_right = 630.849
+margin_bottom = 271.165
+rect_scale = Vector2( 0.75, 0.75 )
 texture = ExtResource( 2 )
 
 [node name="TextureButton" type="TextureButton" parent="MarginContainer/ColorRect"]
 pause_mode = 2
-modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -85.0
-margin_top = -45.0
-margin_right = 85.0
-margin_bottom = 45.0
+margin_left = -385.141
+margin_top = 46.646
+margin_right = -157.141
+margin_bottom = 136.646
 texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 4 )
 
 [connection signal="pressed" from="MarginContainer/ColorRect/TextureButton" to="." method="_on_TextureButton_pressed"]
