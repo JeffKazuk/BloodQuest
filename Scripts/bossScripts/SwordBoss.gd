@@ -65,7 +65,7 @@ func _process(delta):
 		attack_timer = 80000
 		attack()
 		speed = 1
-	$AnimatedSprite.animation = facing
+	$AnimatedSprite.animation = 'default'
 
 func current_angle():
 	angle_to_player = rad2deg(position.angle_to_point(player.position))
