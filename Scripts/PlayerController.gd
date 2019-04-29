@@ -25,6 +25,7 @@ signal boots_picked_up
 signal shield_picked_up
 signal fire(Fire, rotation, position)
 signal hit_enemy(damage)
+signal gold_stick_picked_up
 
 func _ready():
     #position.x = 400

@@ -74,6 +74,9 @@ func attack():
 
 func dead():
     gold_stick = preload('res://Scenes/World/World Gold Stick.tscn')
+    gold_stick = gold_stick.instance()
+    get_parent().add_child(gold_stick)
+    gold_stick.position = get_parent().get_node('stick_podium').position
     get_parent().get_node('FinalBossArenaRoof').queue_free()
     get_parent().get_node('Camera2D').target_name = 'stick_podium'
     get_parent().get_node('FinalBossActivator').spawnable = false
