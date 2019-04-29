@@ -2,8 +2,8 @@
 
 [ext_resource path="res://Scripts/World/OverWorld.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Scenes/World/Camera2D.gd" type="Script" id=3]
-[ext_resource path="res://Scenes/UI/healthbar.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/UI/healthbar.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/World/Camera2D.gd" type="Script" id=4]
 [ext_resource path="res://treeTop.tres" type="TileSet" id=5]
 [ext_resource path="res://Scenes/Camera Locations/BootsBossCamera.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/Activators/BootsBossActivator.tscn" type="PackedScene" id=7]
@@ -30,18 +30,17 @@
 script = ExtResource( 1 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-editor/display_folded = true
 position = Vector2( 20000, 20000 )
 collision_layer = 17
+
+[node name="Gameplay UI" parent="Player" instance=ExtResource( 3 )]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 20000, 20000 )
 current = true
 zoom = Vector2( 1.25, 1.25 )
 smoothing_enabled = true
-script = ExtResource( 3 )
-
-[node name="Gameplay UI" parent="Camera2D" instance=ExtResource( 4 )]
+script = ExtResource( 4 )
 
 [node name="TreeTileMap" type="TileMap" parent="."]
 position = Vector2( 20000, 20000 )
@@ -159,8 +158,11 @@ collision_mask = 16
 position = Vector2( 16300, 18360 )
 z_index = -1
 
+[node name="TileMap" type="TileMap" parent="."]
+format = 1
+
 [connection signal="fire" from="Player" to="." method="_on_Player_fire"]
-[connection signal="health_changed" from="Player/Health" to="Camera2D/Gameplay UI" method="_on_Health_health_changed"]
+[connection signal="health_changed" from="Player/Health" to="Player/Gameplay UI" method="_on_Health_health_changed"]
 [connection signal="body_entered" from="BootsBossActivator" to="BootsBossActivator" method="_on_BootsBossActivator_body_entered"]
 [connection signal="body_exited" from="BootsBossActivator" to="BootsBossActivator" method="_on_BootsBossActivator_body_exited"]
 [connection signal="body_entered" from="SwordBossActivator" to="SwordBossActivator" method="_on_SwordBossActivator_body_entered"]
