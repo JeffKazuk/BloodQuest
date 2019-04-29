@@ -32,7 +32,7 @@ func _process(delta):
 	timer -= delta
 	if timer<=0:
 		attack()
-		timer = rand_range(0,2)
+		timer = rand_range(0,1)
 	#print(rotation)
 	var facing = 'E'
 	var angle = velocity.angle()

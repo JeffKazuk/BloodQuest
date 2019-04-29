@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/Fire.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Test fire.png" type="Texture" id=2]
 [ext_resource path="res://Sprites/Test flames.png" type="Texture" id=3]
+[ext_resource path="res://audio/105016__julien-matthey__jm-fx-fireball-01.wav" type="AudioStream" id=4]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 20.0
@@ -33,4 +34,7 @@ initial_velocity_random = 1.0
 damping = 45.0
 angle = 90.0
 angle_random = 1.0
+
+[node name="fireball_effect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
 
