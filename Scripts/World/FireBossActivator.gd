@@ -28,8 +28,8 @@ func _on_FireBossActivator_body_entered(body):
         boss.connect('fire', get_parent(), '_on_fireBoss_fire')
         Player.connect('hit_enemy', boss, '_get_hit')
     get_parent().get_node('Camera2D').target_name = 'FireBossCamera'
-    get_parent().get_node('Camera2D').zoom.x = 2
-    get_parent().get_node('Camera2D').zoom.y = 2
+    get_parent().get_node('Camera2D').zoom.x = 2.25
+    get_parent().get_node('Camera2D').zoom.y = 2.25
 
 func _on_FireBossActivator_body_exited(body):
     #get_parent().remove_child(boss)
