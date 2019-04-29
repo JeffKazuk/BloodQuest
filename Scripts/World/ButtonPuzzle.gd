@@ -2,6 +2,7 @@ extends Node2D
 
 var pattern = [1, 2, 3, 4]
 var player_pattern = []
+var spawnable = true
 
 func _ready():
     $Button1.connect('body_entered', self, 'button1_depressed')
@@ -57,7 +58,9 @@ func check():
         $Button4.pressed = false
         player_pattern.clear()
     elif player_pattern == pattern:
-        var dagger = preload('res://Scenes/World/World Dagger.tscn')
-        dagger = dagger.instance()
-        get_parent().add_child(dagger)
-        dagger.position = position
+        if spawnable:
+            var dagger = preload('res://Scenes/World/World Dagger.tscn')
+            dagger = dagger.instance()
+            get_parent().add_child(dagger)
+            dagger.position = position
+            spawnable = false
