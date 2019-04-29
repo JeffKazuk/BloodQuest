@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 
-var speed = 2
+var speed = 4
 var velocity=0
 var timer = rand_range(1,3)
 var angle_to_player = 0;
@@ -9,8 +9,7 @@ signal mana (Mana, rotation, position)
 var player
 var distance = 0
 var teleport_timer = 5
-export var teleport_x
-export var teleport_y
+
 
 func _ready():
     set_physics_process(true)
@@ -28,16 +27,21 @@ func _physics_process(delta):
     if distance >= 125:
         move_and_collide(velocity*speed)
     if distance <=124: #&& distance > 75:
-        move_and_collide(-velocity*(speed*1.5))  
+        move_and_collide(-velocity*(speed*1.5))
+
+func teleport():
+    position.x  = rand_range(40,940)
+    position.y = rand_range(40,540)
 
 func _process(delta):
     timer -= delta
     teleport_timer -= delta
     if teleport_timer <= 0:
         teleport()
+        teleport_timer = rand_range(0,5)
     if timer<=0:
         attack()
-        timer = rand_range(0,3)
+        timer = rand_range(0,1)
     #print(rotation)
     var facing = 'E'
     var angle = velocity.angle()
@@ -66,6 +70,10 @@ func _process(delta):
 func _on_hit_by_fireball(area):
     $Health.take_damage(7)
     print('gadersk')
+
+func _get_hit(damage):
+	print('yeowch')
+	$Health.take_damage(damage)
 
 func current_angle():
     angle_to_player = rad2deg(position.angle_to_point(player.position))

@@ -221,11 +221,14 @@ func _process(delta):
     direction = (get_global_mouse_position()-position).normalized()
     #print(equipped)
     if knockback != null:
+        $AnimatedSprite.stop()
         velocity = knockback.normalized() * speed
         move_and_collide(velocity*delta)
     elif velocity.length() > 0: #if the length of the vector is greater than 0
         $AnimatedSprite.play()
         velocity = velocity.normalized() * speed #sets the player's velocity
+    else: 
+        $AnimatedSprite.stop()
     move_and_collide(velocity*delta)#moves the player
     frame_timer -= 1
     if frame_timer <= 0:
