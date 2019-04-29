@@ -179,7 +179,7 @@ func attack(spot):
 
     if equipped == 'dagger':
         for node in get_tree().get_nodes_in_group('enemy'):
-            if position.distance_to(node.position) < 40:
+            if position.distance_to(node.position) < 100:
                 var direction = (get_global_mouse_position()-position).normalized()
                 var angle_to_enemy = rad2deg(direction.angle_to(node.velocity))
                     #print(direction)

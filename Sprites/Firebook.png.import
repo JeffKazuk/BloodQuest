@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Dagger.png-cd0f3c10532574b248bb7b0ac2627d2b.stex"
+path="res://.import/Firebook.png-81994032f973ba0a6daa1ee2a26a7b1c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Dagger.png"
-dest_files=[ "res://.import/Dagger.png-cd0f3c10532574b248bb7b0ac2627d2b.stex" ]
+source_file="res://Sprites/Firebook.png"
+dest_files=[ "res://.import/Firebook.png-81994032f973ba0a6daa1ee2a26a7b1c.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
