@@ -154,6 +154,7 @@ collision_mask = 16
 
 [node name="ButtonPuzzle" parent="." instance=ExtResource( 24 )]
 position = Vector2( 16300, 18360 )
+z_index = -1
 
 [connection signal="fire" from="Player" to="." method="_on_Player_fire"]
 [connection signal="health_changed" from="Player/Health" to="Camera2D/Gameplay UI" method="_on_Health_health_changed"]
