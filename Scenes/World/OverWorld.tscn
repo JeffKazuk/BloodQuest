@@ -111,10 +111,6 @@ format = 1
 tile_data = PoolIntArray( 18153749, 1, 131073, 18153750, 1, 131073 )
 
 [node name="Fade" parent="." instance=ExtResource( 15 )]
-margin_left = 19357.0
-margin_top = 19626.0
-margin_right = 20388.0
-margin_bottom = 20226.0
 
 [node name="MountainLayer1" type="TileMap" parent="."]
 z_index = 5

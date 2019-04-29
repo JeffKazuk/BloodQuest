@@ -1,4 +1,4 @@
-extends Control
+extends CanvasLayer
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -18,5 +18,5 @@ func _process(delta):
 
 func _on_TextureButton_pressed():
 	get_tree().paused = false
-	self.visible = false
+	self.queue_free()
 	
