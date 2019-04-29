@@ -128,6 +128,8 @@ func _on_World_Shield_body_entered(body):
     $Health.shield = true
     emit_signal('shield_picked_up')
 
+func _on_World_Gold_Stick_body_entered(body):
+    pickup_item('gold_stick')
     
 func dash():
     dashing = true
