@@ -25,8 +25,8 @@ func _on_SwordBossActivator_body_entered(body):
         boss.connect('hit_player', Player, '_on_SwordBoss_hit_player')
         Player.connect('hit_enemy', boss, '_get_hit')
     get_parent().get_node('Camera2D').target_name = 'SwordBossCamera'
-    get_parent().get_node('Camera2D').zoom.x = 2
-    get_parent().get_node('Camera2D').zoom.y = 2
+    get_parent().get_node('Camera2D').zoom.x = 2.2
+    get_parent().get_node('Camera2D').zoom.y = 2.2
 
 func _on_SwordBossActivator_body_exited(body):
     #get_parent().remove_child(boss)
