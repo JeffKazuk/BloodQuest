@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/golden-stick.png-f39e408548c0b1916490469edeeeb475.stex"
+path="res://.import/end-credit-thanks.png-36fe2db98856341c4e4f647765f73eb0.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/golden-stick.png"
-dest_files=[ "res://.import/golden-stick.png-f39e408548c0b1916490469edeeeb475.stex" ]
+source_file="res://Sprites/end-credit-thanks.png"
+dest_files=[ "res://.import/end-credit-thanks.png-36fe2db98856341c4e4f647765f73eb0.stex" ]
 
 [params]
 
@@ -20,11 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-<<<<<<< HEAD
-flags/filter=false
-=======
 flags/filter=true
->>>>>>> master
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
