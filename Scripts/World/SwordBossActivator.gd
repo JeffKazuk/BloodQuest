@@ -25,6 +25,6 @@ func _on_SwordBossActivator_body_exited(body):
     if spawnable:
         get_parent().remove_child(boss)
     get_parent().get_node('Camera2D').target_name = 'Player'
-    get_parent().get_node('Camera2D').zoom.x = 1
-    get_parent().get_node('Camera2D').zoom.y = 1
+    get_parent().get_node('Camera2D').zoom.x = 1.25
+    get_parent().get_node('Camera2D').zoom.y = 1.25
     
