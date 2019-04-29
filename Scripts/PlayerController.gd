@@ -29,6 +29,7 @@ signal hit_enemy(damage)
 func _ready():
     #position.x = 400
     #position.y = 400
+    dead = dead.instance()
     $AnimatedSprite.connect('frame_changed', self, 'new_frame')
     $swing_pivot.get_node('swing').connect('animation_finished', self, 'reset_animation')
 
@@ -318,5 +319,5 @@ func _on_SwordBoss_hit_player():
 
 func _on_Health_health_depleted():
     print('dead')
-    dead = dead.instance()
+    
     get_parent().add_child(dead)
