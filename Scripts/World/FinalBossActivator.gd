@@ -28,8 +28,8 @@ func _on_FinalBossActivator_body_entered(body):
         boss.connect('mana', get_parent(), '_on_finalBoss_fire')
         Player.connect('hit_enemy', boss, '_get_hit')
     get_parent().get_node('Camera2D').target_name = 'FinalBossCamera'
-    get_parent().get_node('Camera2D').zoom.x = 2.5
-    get_parent().get_node('Camera2D').zoom.y = 2.5
+    get_parent().get_node('Camera2D').zoom.x = 3.25
+    get_parent().get_node('Camera2D').zoom.y = 3.25
 
 func _on_FinalBossActivator_body_exited(body):
     #get_parent().remove_child(boss)
