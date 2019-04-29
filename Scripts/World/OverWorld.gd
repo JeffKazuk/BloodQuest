@@ -3,6 +3,8 @@ extends Node2D
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
+var crate_counter = 0
+var shield_released = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -91,3 +93,15 @@ func _on_finalBoss_fire(Mana, angle, position):
 	m.position = position
 	m.velocity.x = cos(rot)
 	m.velocity.y = sin(rot)
+
+func crate_here(area):
+	crate_counter += 1
+	if crate_counter == 3:
+		if not shield_released:
+			var shield = preload('res://Scenes/World/World Shield.tscn')
+			shield = shield.instance()
+			add_child(shield)
+			shield.position = $shield_spawn_point.position
+
+func crate_gone(area):
+	crate_counter -= 1
