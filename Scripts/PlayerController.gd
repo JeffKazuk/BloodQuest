@@ -19,6 +19,7 @@ signal sword_picked_up
 signal fire_picked_up
 signal dagger_picked_up
 signal boots_picked_up
+signal shield_picked_up
 signal fire(Fire, rotation, position)
 signal hit_enemy(damage)
 
@@ -103,8 +104,12 @@ func _on_World_Dagger_body_entered(body):
     $Health.take_damage(10)
 
 func _on_World_Boots_body_entered(body):
-    pickup_item('boots')
+    emit_signal('boots_picked_up')
     default_speed = 800
+
+func _on_World_Shield_body_entered(body):
+    $Health.shield = true
+    emit_signal('shield_picked_up')
 
     
 func dash():
