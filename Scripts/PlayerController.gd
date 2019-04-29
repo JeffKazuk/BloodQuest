@@ -15,6 +15,7 @@ var fire_timer = 0
 var knockback = null
 var dashing = false
 var angle_changed = false
+var dead = preload('res://dead.tscn')
 
 signal stick_picked_up
 signal sword_picked_up
@@ -317,4 +318,5 @@ func _on_SwordBoss_hit_player():
 
 func _on_Health_health_depleted():
     print('dead')
-    get_parent().queue_free()
+    dead = dead.instance()
+    get_parent().add_child(dead)
