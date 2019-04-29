@@ -12,6 +12,7 @@ var distance = 0
 func _ready():
 	set_physics_process(true)
 	player = get_parent().find_node("Player")
+	$Health.connect('health_depleted', self, 'dead')
 	$Area2D.connect('area_entered', self, '_on_hit_by_fireball')
 	#print(target)
 
@@ -30,7 +31,7 @@ func _process(delta):
 	timer -= delta
 	if timer<=0:
 		attack()
-		timer = rand_range(1,3)
+		timer = rand_range(0,2)
 	#print(rotation)
 	var facing = 'E'
 	var angle = velocity.angle()
@@ -71,3 +72,14 @@ func attack():
     var Fire = preload('res://Scenes/Bosses/fireBoss/MeanGuyFire.tscn')
     emit_signal('fire', Fire, velocity.angle(), position)
 
+func _get_hit(damage):
+	print('yeowch')
+	$Health.take_damage(damage)
+
+func dead():
+	get_parent().get_node('FireBossActivator').spawnable = false
+	var fire = preload('res://Scenes/World/World Boots.tscn')
+	fire = fire.instance()
+	get_parent().add_child(fire)
+	fire.position = position
+	self.queue_free()

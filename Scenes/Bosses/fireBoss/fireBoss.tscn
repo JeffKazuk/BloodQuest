@@ -1,26 +1,26 @@
 [gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scripts/bossScripts/fireBoss.gd" type="Script" id=1]
-[ext_resource path="res://Sprites/sprite_6.png" type="Texture" id=2]
-[ext_resource path="res://Sprites/sprite_7.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/sprite_2.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/sprite_6.png" type="Texture" id=3]
 [ext_resource path="res://Sprites/sprite_1.png" type="Texture" id=4]
-[ext_resource path="res://Sprites/sprite_4.png" type="Texture" id=5]
-[ext_resource path="res://Sprites/sprite_2.png" type="Texture" id=6]
-[ext_resource path="res://Sprites/sprite_3.png" type="Texture" id=7]
-[ext_resource path="res://Sprites/sprite_5.png" type="Texture" id=8]
-[ext_resource path="res://Sprites/sprite_0.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/sprite_3.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/sprite_5.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/sprite_0.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/sprite_7.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/sprite_4.png" type="Texture" id=9]
 [ext_resource path="res://Scripts/Health.gd" type="Script" id=10]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 2 ) ],
 "loop": true,
-"name": "S",
+"name": "N",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 3 ) ],
 "loop": true,
-"name": "SE",
+"name": "S",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 4 ) ],
@@ -30,27 +30,27 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 5 ) ],
 "loop": true,
-"name": "W",
+"name": "NW",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 6 ) ],
 "loop": true,
-"name": "N",
+"name": "SW",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 7 ) ],
 "loop": true,
-"name": "NW",
+"name": "E",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 8 ) ],
 "loop": true,
-"name": "SW",
+"name": "SE",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 9 ) ],
 "loop": true,
-"name": "E",
+"name": "W",
 "speed": 5.0
 } ]
 

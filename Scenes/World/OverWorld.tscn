@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Scripts/World/OverWorld.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=2]
@@ -17,11 +17,12 @@
 [ext_resource path="res://Scenes/UI/Fade.tscn" type="PackedScene" id=15]
 [ext_resource path="res://AudioMain.tscn" type="PackedScene" id=16]
 [ext_resource path="res://AudioBoots.tscn" type="PackedScene" id=17]
-[ext_resource path="res://Scenes/Crate.tscn" type="PackedScene" id=18]
-[ext_resource path="res://Scenes/shield_spawn_point.tscn" type="PackedScene" id=19]
-[ext_resource path="res://Scenes/Activators/Crate_activator.tscn" type="PackedScene" id=20]
-[ext_resource path="res://Scenes/Activators/cave_activator.tscn" type="PackedScene" id=21]
-[ext_resource path="res://Scenes/World/World Stick.tscn" type="PackedScene" id=22]
+[ext_resource path="res://Scenes/shield_spawn_point.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Scenes/World/CratePuzzle.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Scenes/Activators/cave_activator.tscn" type="PackedScene" id=20]
+[ext_resource path="res://Scenes/World/World Stick.tscn" type="PackedScene" id=21]
+[ext_resource path="res://Scenes/Camera Locations/FireBossCamera.tscn" type="PackedScene" id=22]
+[ext_resource path="res://Scenes/Activators/FireBossActivator.tscn" type="PackedScene" id=23]
 
 [node name="OverWorld" type="Node2D"]
 script = ExtResource( 1 )
@@ -133,38 +134,26 @@ volume_db = -20.0
 
 [node name="AudioBoots" parent="." instance=ExtResource( 17 )]
 
-[node name="Crate" parent="." instance=ExtResource( 18 )]
-position = Vector2( 24660, 17950 )
-collision_mask = 0
-
-[node name="Crate2" parent="." instance=ExtResource( 18 )]
-position = Vector2( 24660, 18010 )
-collision_mask = 0
-
-[node name="Crate3" parent="." instance=ExtResource( 18 )]
-position = Vector2( 24660, 18070 )
-collision_mask = 0
-
-[node name="shield_spawn_point" parent="." instance=ExtResource( 19 )]
+[node name="shield_spawn_point" parent="." instance=ExtResource( 18 )]
 position = Vector2( 23710, 18020 )
 
-[node name="Crate_activator2" parent="." instance=ExtResource( 20 )]
-position = Vector2( 24410, 18010 )
+[node name="CratePuzzle" parent="." instance=ExtResource( 19 )]
 
-[node name="Crate_activator3" parent="." instance=ExtResource( 20 )]
-position = Vector2( 24210, 17950 )
-
-[node name="Crate_activator" parent="." instance=ExtResource( 20 )]
-position = Vector2( 24090, 18080 )
-
-[node name="cave_activator" parent="." instance=ExtResource( 21 )]
+[node name="cave_activator" parent="." instance=ExtResource( 20 )]
 position = Vector2( 17780, 17360 )
 scale = Vector2( 2, 2 )
 collision_layer = 0
 collision_mask = 16
 
-[node name="World Sword" parent="." instance=ExtResource( 22 )]
+[node name="World Sword" parent="." instance=ExtResource( 21 )]
 position = Vector2( 19840, 18540 )
+
+[node name="FireBossCamera" parent="." instance=ExtResource( 22 )]
+position = Vector2( 15420, 17010 )
+
+[node name="FireBossActivator" parent="." instance=ExtResource( 23 )]
+collision_layer = 0
+collision_mask = 16
 
 [connection signal="fire" from="Player" to="." method="_on_Player_fire"]
 [connection signal="health_changed" from="Player/Health" to="Camera2D/Gameplay UI" method="_on_Health_health_changed"]
