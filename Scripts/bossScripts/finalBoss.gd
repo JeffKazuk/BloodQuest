@@ -14,6 +14,7 @@ var teleport_timer = 5
 func _ready():
     set_physics_process(true)
     player = get_parent().find_node("Player")
+    $Health.connect('health_depleted', self, 'dead')
     $Area2D.connect('area_entered', self, '_on_hit_by_fireball')
     self.connect('mana', get_parent(), '_on_finalBoss_fire')
 	#print(target)
@@ -30,8 +31,8 @@ func _physics_process(delta):
         move_and_collide(-velocity*(speed*1.5))
 
 func teleport():
-    position.x  = rand_range(40,940)
-    position.y = rand_range(40,540)
+    position.x  = rand_range(19300,20470)
+    position.y = rand_range(14480,15670)
 
 func _process(delta):
     timer -= delta
@@ -41,7 +42,7 @@ func _process(delta):
         teleport_timer = rand_range(0,5)
     if timer<=0:
         attack()
-        timer = rand_range(0,1)
+        timer = rand_range(0,.5)
     #print(rotation)
     var facing = 'E'
     var angle = velocity.angle()
@@ -86,3 +87,6 @@ func attack():
     var Mana = preload('res://Scenes/Bosses/finalBoss/Mana.tscn')
     emit_signal('mana', Mana, velocity.angle(), position)
 
+func dead():
+	get_parent().get_node('FinalBossActivator').spawnable = false
+	self.queue_free()
