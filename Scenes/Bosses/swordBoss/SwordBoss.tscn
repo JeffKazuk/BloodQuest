@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Scripts/bossScripts/SwordBoss.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/sprite_1.png" type="Texture" id=2]
@@ -15,6 +15,8 @@
 [ext_resource path="res://Sprites/attack/sword swing3.png" type="Texture" id=13]
 [ext_resource path="res://Sprites/attack/sword swing4.png" type="Texture" id=14]
 [ext_resource path="res://Sprites/attack/sword swing5.png" type="Texture" id=15]
+[ext_resource path="res://audio/sword.wav" type="AudioStream" id=16]
+[ext_resource path="res://audio/hit.wav" type="AudioStream" id=17]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -65,8 +67,8 @@ extents = Vector2( 8, 8.66667 )
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
 "frames": [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ) ],
-"loop": true,
-"name": "default",
+"loop": false,
+"name": "metal",
 "speed": 15.0
 } ]
 
@@ -102,4 +104,11 @@ visible = false
 position = Vector2( 0, -60 )
 scale = Vector2( 5, 5 )
 frames = SubResource( 3 )
+animation = "metal"
+
+[node name="sword_swing" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 16 )
+
+[node name="get_hit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 17 )
 

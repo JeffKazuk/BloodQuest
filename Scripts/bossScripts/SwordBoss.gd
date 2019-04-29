@@ -74,28 +74,24 @@ func current_angle():
 
 func _on_hit_by_fireball(area):
 	$Health.take_damage(7)
+	$get_hit.play()
 	print('gadersk')
 
 
 func attack():
 	print("Enemy is attacking")
-	$swing_pivot.rotation = velocity.angle()+PI/2
+	$swing_pivot.rotation = deg2rad(current_angle())-PI/2
 	$swing_pivot.get_node('swing').animation = 'metal'
 	$swing_pivot.get_node('swing').frame = 0
 	$swing_pivot.show()
 	$swing_pivot.get_node('swing').play()
+	$sword_swing.play()
 	if position.distance_to(player.global_position) < 150:
-        #velocity = (player.global_position - global_position).normalized()
-        #var angle_to_player = rad2deg(velocity.angle_to(player.velocity))
-                #print(velocity)
-                #print(node.velocity)
-        #print(abs(angle_to_player))
-                #I very clearly fucked this up but it works
-        #if abs(angle_to_player) < 202.5 && abs(angle_to_player) > 157.5:
         emit_signal('hit_player')
 
 func _get_hit(damage):
 	print('yeowch')
+	$get_hit.play()
 	$Health.take_damage(damage)
 
 func dead():

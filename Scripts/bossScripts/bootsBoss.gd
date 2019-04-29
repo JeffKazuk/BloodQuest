@@ -85,13 +85,14 @@ func attack():
 
 func _on_hit_by_fireball(area):
 	$Health.take_damage(10)
+	$get_hit.play()
 	print('gadersk')
 
 func _on_Area2D_body_entered(body):
 	emit_signal('hit_player', velocity)
 
 func _get_hit(damage):
-	print('yeowch')
+	$get_hit.play()
 	$Health.take_damage(damage)
 
 func dead():

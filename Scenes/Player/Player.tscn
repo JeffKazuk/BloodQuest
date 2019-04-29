@@ -1,4 +1,4 @@
-[gd_scene load_steps=95 format=2]
+[gd_scene load_steps=98 format=2]
 
 [ext_resource path="res://Scripts/PlayerController.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/TinyKnight/SE/Tiny Knight SE running1.png" type="Texture" id=2]
@@ -91,6 +91,9 @@
 [ext_resource path="res://Sprites/attack/sword swing3.png" type="Texture" id=89]
 [ext_resource path="res://Sprites/attack/sword swing4.png" type="Texture" id=90]
 [ext_resource path="res://Sprites/attack/sword swing5.png" type="Texture" id=91]
+[ext_resource path="res://audio/stick.wav" type="AudioStream" id=92]
+[ext_resource path="res://audio/sword.wav" type="AudioStream" id=93]
+[ext_resource path="res://audio/player_hit.wav" type="AudioStream" id=94]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -209,6 +212,15 @@ scale = Vector2( 5, 5 )
 frames = SubResource( 3 )
 animation = "metal"
 frame = 1
+
+[node name="stick_swing" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 92 )
+
+[node name="sword_swing" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 93 )
+
+[node name="player_hit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 94 )
 
 [connection signal="health_depleted" from="Health" to="." method="_on_Health_health_depleted"]
 [connection signal="area_entered" from="Hitbox" to="." method="_on_Hitbox_area_entered"]

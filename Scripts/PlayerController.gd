@@ -165,6 +165,7 @@ func attack(spot):
         $swing_pivot.get_node('swing').frame = 0
         $swing_pivot.show()
         $swing_pivot.get_node('swing').play()
+        $stick_swing.play()
         for node in get_tree().get_nodes_in_group('enemy'):
             if position.distance_to(node.position) < 150:
                 
@@ -183,6 +184,7 @@ func attack(spot):
         $swing_pivot.get_node('swing').frame = 0
         $swing_pivot.show()
         $swing_pivot.get_node('swing').play()
+        $sword_swing.play()
         for node in get_tree().get_nodes_in_group('enemy'):
             if position.distance_to(node.position) < 150:
                 
@@ -201,7 +203,7 @@ func attack(spot):
         $swing_pivot.get_node('swing').frame = 0
         $swing_pivot.show()
         $swing_pivot.get_node('swing').play()
-
+        $sword_swing.play()
         for node in get_tree().get_nodes_in_group('enemy'):
             if position.distance_to(node.position) < 100:
                 var direction = (get_global_mouse_position()-position).normalized()
@@ -303,6 +305,7 @@ func reset_animation():
     
 #detect and take damage from fireballs
 func _on_Hitbox_area_entered(area):
+    $player_hit.play()
     $Health.take_damage(10)
     
 func _on_bootsBoss_hit_player(velocity):
@@ -314,10 +317,10 @@ func _on_bootsBoss_hit_player(velocity):
     frame_timer = 5
 
 func _on_SwordBoss_hit_player():
+    $player_hit.play()
     print('Get Fukt')
     $Health.take_damage(20)
 
 func _on_Health_health_depleted():
     print('dead')
-    
     get_parent().add_child(dead)
