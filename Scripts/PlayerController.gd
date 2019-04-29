@@ -15,6 +15,7 @@ var fire_timer = 0
 var knockback = null
 var dashing = false
 var angle_changed = false
+var dead = preload('res://dead.tscn')
 
 signal stick_picked_up
 signal sword_picked_up
@@ -29,6 +30,7 @@ func _ready():
     #position.x = 400
     #position.y = 400
     $AnimatedSprite.connect('frame_changed', self, 'new_frame')
+    $swing_pivot.get_node('swing').connect('animation_finished', self, 'reset_animation')
 
 func current_angle():
     return get_global_mouse_position().angle_to_point(get_position())
@@ -157,6 +159,11 @@ func dash():
 func attack(spot):
     # print(spot)
     if equipped == 'stick':
+        $swing_pivot.rotation = direction.angle()+PI/2
+        $swing_pivot.get_node('swing').animation = 'wood'
+        $swing_pivot.get_node('swing').frame = 0
+        $swing_pivot.show()
+        $swing_pivot.get_node('swing').play()
         for node in get_tree().get_nodes_in_group('enemy'):
             if position.distance_to(node.position) < 150:
                 
@@ -170,6 +177,11 @@ func attack(spot):
                     # print('hit enemy')
 
     if equipped == 'sword':
+        $swing_pivot.rotation = direction.angle()+PI/2
+        $swing_pivot.get_node('swing').animation = 'metal'
+        $swing_pivot.get_node('swing').frame = 0
+        $swing_pivot.show()
+        $swing_pivot.get_node('swing').play()
         for node in get_tree().get_nodes_in_group('enemy'):
             if position.distance_to(node.position) < 150:
                 
@@ -183,10 +195,18 @@ func attack(spot):
                     # print('hit enemy')
 
     if equipped == 'dagger':
+        $swing_pivot.rotation = direction.angle()+PI/2
+        $swing_pivot.get_node('swing').animation = 'metal'
+        $swing_pivot.get_node('swing').frame = 0
+        $swing_pivot.show()
+        $swing_pivot.get_node('swing').play()
+
         for node in get_tree().get_nodes_in_group('enemy'):
             if position.distance_to(node.position) < 100:
                 var direction = (get_global_mouse_position()-position).normalized()
                 var angle_to_enemy = rad2deg(direction.angle_to(node.velocity))
+                
+                
                     #print(direction)
                     #print(node.direction)
                 print(abs(angle_to_enemy))
@@ -242,6 +262,25 @@ func _process(delta):
         $AnimatedSprite.play()
         velocity = velocity.normalized() * speed #sets the player's velocity
     else: 
+        $AnimatedSprite.animation = 'Idles'
+        match facing:
+            '0':
+                $AnimatedSprite.frame = 7
+            '90':
+                $AnimatedSprite.frame = 4
+            '180':
+                $AnimatedSprite.frame = 6
+            '270':
+                $AnimatedSprite.frame = 5
+            '45':
+                $AnimatedSprite.frame = 0
+            '135':
+                $AnimatedSprite.frame = 1
+            '225':
+                $AnimatedSprite.frame = 2
+            '315':
+                $AnimatedSprite.frame = 3
+
         $AnimatedSprite.stop()
     move_and_collide(velocity*delta)#moves the player
     frame_timer -= 1
@@ -251,27 +290,16 @@ func _process(delta):
         dashing = false
     
 func new_frame():
-    if $AnimatedSprite.frame == 1 || $AnimatedSprite.frame == 6:
-        $footstep.pitch_scale = rand_range(1,1.5)
-        $footstep.play()
-        # var rand_step = randi()%7+1
-        # match rand_step:
-        #     1:
-        #         $footstep1.play()
-        #     2:
-        #         $footstep2.play()
-        #     3:
-        #         $footstep3.play()
-        #     4:
-        #         $footstep4.play()
-        #     5:
-        #         $footstep5.play()
-        #     6:
-        #         $footstep6.play()
-        #     7:
-        #         $footstep7.play()
+    if not $AnimatedSprite.animation == 'Idles':
+        if $AnimatedSprite.frame == 1 || $AnimatedSprite.frame == 6:
+            $footstep.pitch_scale = rand_range(1,1.5)
+            $footstep.play()
 
-
+func reset_animation():
+    # $swing_pivot.hide()
+    # $swing_pivot.get_node('swing').frame = 0
+    pass
+    
 #detect and take damage from fireballs
 func _on_Hitbox_area_entered(area):
     $Health.take_damage(10)
@@ -290,4 +318,5 @@ func _on_SwordBoss_hit_player():
 
 func _on_Health_health_depleted():
     print('dead')
-    get_parent().queue_free()
+    dead = dead.instance()
+    get_parent().add_child(dead)
