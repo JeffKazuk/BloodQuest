@@ -98,27 +98,33 @@ func pickup_item(item):
 
 func _on_World_Sword_body_entered(body):
     pickup_item('sword')
+    $player_hit.play()
     $Health.take_damage(30)
     
 func _on_World_Stick_body_entered(body):
     pickup_item('stick')
+    $player_hit.play()
     $Health.take_damage(5)
 
 func _on_World_Fire_body_entered(body):
     pickup_item('fire')
+    $player_hit.play()
     $Health.take_damage(20)
 
 func _on_World_Dagger_body_entered(body):
     pickup_item('dagger')
+    $player_hit.play()
     $Health.take_damage(10)
 
 func _on_World_Boots_body_entered(body):
     $Health.take_damage(10)
+    $player_hit.play()
     emit_signal('boots_picked_up')
     default_speed = 800
 
 func _on_World_Shield_body_entered(body):
     $Health.take_damage(50)
+    $player_hit.play()
     $Health.shield = true
     emit_signal('shield_picked_up')
 
