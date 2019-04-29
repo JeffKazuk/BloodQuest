@@ -177,10 +177,8 @@ tile_data = PoolIntArray( 12386604, 1, 65537, 12386605, 1, 65537, 12386606, 1, 6
 position = Vector2( 19890, 14957 )
 
 [node name="FinalBossActivator" parent="." instance=ExtResource( 29 )]
-position = Vector2( 19746, 15114 )
+position = Vector2( 19700, 13300 )
 scale = Vector2( 1, 0.51 )
-collision_layer = 0
-collision_mask = 16
 
 [node name="FinalBossArenaRoof" type="TileMap" parent="."]
 tile_set = ExtResource( 15 )
@@ -189,6 +187,9 @@ tile_data = PoolIntArray( 13828404, 0, 0, 13828405, 0, 0, 13828406, 0, 0, 138284
 
 [node name="stick_podium" type="Node2D" parent="."]
 position = Vector2( 19871.9, 13216.2 )
+
+[node name="stick_activator_position" type="Node2D" parent="."]
+position = Vector2( 19950, 11990 )
 
 [connection signal="fire" from="Player" to="." method="_on_Player_fire"]
 [connection signal="health_changed" from="Player/Health" to="Player/Gameplay UI" method="_on_Health_health_changed"]

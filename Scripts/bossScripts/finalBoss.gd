@@ -74,10 +74,14 @@ func attack():
 
 func dead():
     gold_stick = preload('res://Scenes/World/World Gold Stick.tscn')
+    var gold_stick_activator = preload('res://Scenes/Activators/GoldStickActivator.tscn')
     gold_stick = gold_stick.instance()
+    gold_stick_activator = gold_stick_activator.instance()
     get_parent().add_child(gold_stick)
+    get_parent().add_child(gold_stick_activator)
     gold_stick.position = get_parent().get_node('stick_podium').position
+    gold_stick_activator.position = get_parent().get_node('stick_activator_position').position
     get_parent().get_node('FinalBossArenaRoof').queue_free()
-    get_parent().get_node('Camera2D').target_name = 'stick_podium'
+    # get_parent().get_node('Camera2D').target_name = 'stick_podium'
     get_parent().get_node('FinalBossActivator').spawnable = false
     self.queue_free()
