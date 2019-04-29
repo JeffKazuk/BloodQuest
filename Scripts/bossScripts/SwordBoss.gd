@@ -78,8 +78,13 @@ func _on_hit_by_fireball(area):
 
 
 func attack():
-    print("Enemy is attacking")
-    if position.distance_to(player.global_position) < 150:
+	print("Enemy is attacking")
+	$swing_pivot.rotation = velocity.angle()+PI/2
+	$swing_pivot.get_node('swing').animation = 'metal'
+	$swing_pivot.get_node('swing').frame = 0
+	$swing_pivot.show()
+	$swing_pivot.get_node('swing').play()
+	if position.distance_to(player.global_position) < 150:
         #velocity = (player.global_position - global_position).normalized()
         #var angle_to_player = rad2deg(velocity.angle_to(player.velocity))
                 #print(velocity)

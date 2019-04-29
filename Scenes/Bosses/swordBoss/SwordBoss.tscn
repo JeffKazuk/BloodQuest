@@ -96,6 +96,7 @@ scale = Vector2( 3, 3 )
 shape = SubResource( 2 )
 
 [node name="swing_pivot" type="Node2D" parent="."]
+visible = false
 
 [node name="swing" type="AnimatedSprite" parent="swing_pivot"]
 position = Vector2( 0, -60 )
