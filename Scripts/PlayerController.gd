@@ -148,6 +148,7 @@ func dash():
     velocity.x = cos(rot)
     velocity.y = sin(rot)
     speed *= 10
+    $dash.play()
 
 func attack(spot):
     # print(spot)
@@ -250,6 +251,7 @@ func _on_Hitbox_area_entered(area):
     $Health.take_damage(10)
     
 func _on_bootsBoss_hit_player(velocity):
+    $bash.play()
     print('Das Boot')
     $Health.take_damage(10)
     knockback = velocity

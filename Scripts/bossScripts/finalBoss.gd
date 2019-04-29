@@ -31,6 +31,7 @@ func _physics_process(delta):
         move_and_collide(-velocity*(speed*1.5))
 
 func teleport():
+    $teleport.play()
     position.x  = rand_range(19300,20470)
     position.y = rand_range(14480,15670)
 
