@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/GameUI.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/bg.png" type="Texture" id=2]
 [ext_resource path="res://Sprites/fill.png" type="Texture" id=3]
 [ext_resource path="res://Scripts/Healthbar.gd" type="Script" id=4]
+[ext_resource path="res://Scenes/UI/TextureRect.gd" type="Script" id=5]
 
 [sub_resource type="Animation" id=1]
 resource_name = "healthfade"
@@ -19,6 +20,18 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Healthbar2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.2, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
 [node name="HealthBar" type="CanvasLayer"]
@@ -42,5 +55,27 @@ script = ExtResource( 4 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Healthbar"]
 autoplay = "healthfade"
 anims/healthfade = SubResource( 1 )
+
+[node name="Healthbar2" type="TextureProgress" parent="Healthbar"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 685.0
+margin_top = -106.0
+margin_right = 793.0
+margin_bottom = -16.9999
+texture_under = ExtResource( 2 )
+texture_progress = ExtResource( 3 )
+nine_patch_stretch = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = 908.0
+margin_top = 509.0
+margin_right = 969.0
+margin_bottom = 557.0
+expand = true
+script = ExtResource( 5 )
 
 [connection signal="health_changed" from="." to="Healthbar" method="_on_HealthBar_health_changed"]
