@@ -1,61 +1,74 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Scripts/bossScripts/SwordBoss.gd" type="Script" id=1]
-[ext_resource path="res://Sprites/sprite_6.png" type="Texture" id=2]
-[ext_resource path="res://Sprites/sprite_7.png" type="Texture" id=3]
-[ext_resource path="res://Sprites/sprite_1.png" type="Texture" id=4]
-[ext_resource path="res://Sprites/sprite_4.png" type="Texture" id=5]
-[ext_resource path="res://Sprites/sprite_2.png" type="Texture" id=6]
-[ext_resource path="res://Sprites/sprite_3.png" type="Texture" id=7]
-[ext_resource path="res://Sprites/sprite_5.png" type="Texture" id=8]
-[ext_resource path="res://Sprites/sprite_0.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/sprite_1.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/sprite_4.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/sprite_6.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/sprite_0.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/sprite_5.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/sprite_7.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/sprite_3.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/sprite_2.png" type="Texture" id=9]
 [ext_resource path="res://Scripts/Health.gd" type="Script" id=10]
+[ext_resource path="res://Sprites/attack/sword swing1.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/attack/sword swing2.png" type="Texture" id=12]
+[ext_resource path="res://Sprites/attack/sword swing3.png" type="Texture" id=13]
+[ext_resource path="res://Sprites/attack/sword swing4.png" type="Texture" id=14]
+[ext_resource path="res://Sprites/attack/sword swing5.png" type="Texture" id=15]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 2 ) ],
 "loop": true,
-"name": "S",
+"name": "NE",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 3 ) ],
 "loop": true,
-"name": "SE",
+"name": "W",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 4 ) ],
 "loop": true,
-"name": "NE",
+"name": "S",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 5 ) ],
 "loop": true,
-"name": "W",
+"name": "E",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 6 ) ],
 "loop": true,
-"name": "N",
+"name": "SW",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 7 ) ],
 "loop": true,
-"name": "NW",
+"name": "SE",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 8 ) ],
 "loop": true,
-"name": "SW",
+"name": "NW",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 9 ) ],
 "loop": true,
-"name": "E",
+"name": "N",
 "speed": 5.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 8, 8.66667 )
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ) ],
+"loop": true,
+"name": "default",
+"speed": 15.0
+} ]
 
 [node name="SwordBoss" type="KinematicBody2D" groups=[
 "enemy",
@@ -81,4 +94,11 @@ collision_mask = 1024
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
 scale = Vector2( 3, 3 )
 shape = SubResource( 2 )
+
+[node name="swing_pivot" type="Node2D" parent="."]
+
+[node name="swing" type="AnimatedSprite" parent="swing_pivot"]
+position = Vector2( 0, -60 )
+scale = Vector2( 5, 5 )
+frames = SubResource( 3 )
 
