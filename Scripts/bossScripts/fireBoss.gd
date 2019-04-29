@@ -61,7 +61,7 @@ func _get_hit(damage):
 
 func dead():
 	get_parent().get_node('FireBossActivator').spawnable = false
-	var fire = preload('res://Scenes/World/World Boots.tscn')
+	var fire = preload('res://Scenes/World/World Fire.tscn')
 	fire = fire.instance()
 	get_parent().add_child(fire)
 	fire.position = position
