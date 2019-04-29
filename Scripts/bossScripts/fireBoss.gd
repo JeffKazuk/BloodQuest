@@ -14,6 +14,7 @@ func _ready():
 	player = get_parent().find_node("Player")
 	$Health.connect('health_depleted', self, 'dead')
 	$Area2D.connect('area_entered', self, '_on_hit_by_fireball')
+	$AnimatedSprite.play()
 	#print(target)
 
 func _physics_process(delta):
@@ -36,24 +37,6 @@ func _process(delta):
 	var facing = 'E'
 	var angle = velocity.angle()
 	#print(angle)
-	if angle > PI/8 && angle < 3*PI/8:
-		facing = 'SE'
-	if angle > 3*PI/8 && angle < 5*PI/8:
-		facing = 'S'
-	if angle > 5*PI/8 && angle < 7*PI/8:
-		facing = 'SW'
-	if angle > 7*PI/8 && angle < PI:
-		facing = 'W'
-	if angle > -PI/8 && angle < PI/8:
-		facing = 'E'
-	if angle > -3*PI/8 && angle < -PI/8:
-		facing = 'NE'
-	if angle > -5*PI/8 && angle < -3*PI/8:
-		facing = 'N'
-	if angle > -7*PI/8 && angle < -5*PI/8:
-		facing = 'NW'
-	if angle > -PI && angle < -7*PI/8:
-		facing = 'W'
 
 	$AnimatedSprite.animation = facing
 
