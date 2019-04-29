@@ -6,7 +6,7 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	randomize()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -64,3 +64,30 @@ func _on_fireBoss_fire(Fire, angle, position):
 	f.position = position
 	f.velocity.x = cos(rot)
 	f.velocity.y = sin(rot)
+	
+func _on_finalBoss_fire(Mana, angle, position):
+	var m = Mana.instance()
+	var rot = 0
+	add_child(m)
+	if angle > PI/8 && angle < 3*PI/8:
+	    rot = PI/4
+	if angle > 3*PI/8 && angle < 5*PI/8:
+	    rot = PI/2
+	if angle > 5*PI/8 && angle < 7*PI/8:
+	    rot = 3*PI/4
+	if angle > 7*PI/8 && angle < PI:
+	    rot = PI
+	if angle > -PI/8 && angle < PI/8:
+	    rot = 0
+	if angle > -3*PI/8 && angle < -PI/8:
+	    rot = -PI/4
+	if angle > -5*PI/8 && angle < -3*PI/8:
+	    rot = -PI/2
+	if angle > -7*PI/8 && angle < -5*PI/8:
+	    rot = -3*PI/4
+	if angle > -PI && angle < -7*PI/8:
+	    rot = -PI
+	m.rotation = rot
+	m.position = position
+	m.velocity.x = cos(rot)
+	m.velocity.y = sin(rot)
