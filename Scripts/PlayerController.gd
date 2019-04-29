@@ -222,6 +222,7 @@ func _process(delta):
         velocity = knockback.normalized() * speed
         move_and_collide(velocity*delta)
     elif velocity.length() > 0: #if the length of the vector is greater than 0
+        $AnimatedSprite.play()
         velocity = velocity.normalized() * speed #sets the player's velocity
     move_and_collide(velocity*delta)#moves the player
     frame_timer -= 1
