@@ -3,14 +3,22 @@ extends Area2D
 var Boss
 var boss
 var Player
+var audioMain
+var audioFire
 export var spawnable = true
 
 func _ready():
     Boss = preload('res://Scenes/Bosses/fireBoss/fireBoss.tscn')
     boss = Boss.instance()
     Player = get_parent().find_node('Player')
+    audioMain = get_parent().find_node('AudioMain')
+    audioFire = get_parent().find_node('AudioFire')
     self.connect('body_entered', self, '_on_FireBossActivator_body_entered')
     self.connect('body_exited', self, '_on_FireBossActivator_body_exited')
+    self.connect('body_entered',audioMain,"boss")
+    self.connect('body_exited',audioMain,"notBoss")
+    self.connect('body_entered',audioFire,"boss")
+    self.connect('body_exited',audioFire,"notBoss")
 
 
 func _on_FireBossActivator_body_entered(body):
