@@ -110,7 +110,7 @@ func _on_World_Boots_body_entered(body):
     $Health.take_damage(10)
     $player_hit.play()
     emit_signal('boots_picked_up')
-    default_speed = 800
+    default_speed = 600
 
 func _on_World_Shield_body_entered(body):
     $Health.take_damage(30)
