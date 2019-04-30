@@ -1,10 +1,12 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scripts/GameUI.gd" type="Script" id=1]
-[ext_resource path="res://Sprites/bg.png" type="Texture" id=2]
-[ext_resource path="res://Sprites/fill.png" type="Texture" id=3]
+[ext_resource path="res://frame.png" type="Texture" id=2]
+[ext_resource path="res://fill.png" type="Texture" id=3]
 [ext_resource path="res://Scripts/Healthbar.gd" type="Script" id=4]
-[ext_resource path="res://Scenes/UI/TextureRect.gd" type="Script" id=5]
+[ext_resource path="res://Sprites/bg.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/fill.png" type="Texture" id=6]
+[ext_resource path="res://Scenes/UI/TextureRect.gd" type="Script" id=7]
 
 [sub_resource type="Animation" id=1]
 resource_name = "healthfade"
@@ -66,8 +68,8 @@ margin_left = 685.0
 margin_top = -106.0
 margin_right = 793.0
 margin_bottom = -16.9999
-texture_under = ExtResource( 2 )
-texture_progress = ExtResource( 3 )
+texture_under = ExtResource( 5 )
+texture_progress = ExtResource( 6 )
 nine_patch_stretch = true
 
 [node name="TextureRect" type="TextureRect" parent="."]
@@ -76,6 +78,6 @@ margin_top = 509.0
 margin_right = 969.0
 margin_bottom = 557.0
 expand = true
-script = ExtResource( 5 )
+script = ExtResource( 7 )
 
 [connection signal="health_changed" from="." to="Healthbar" method="_on_HealthBar_health_changed"]
