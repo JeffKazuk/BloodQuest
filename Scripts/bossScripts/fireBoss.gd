@@ -15,14 +15,11 @@ func _ready():
 	$Health.connect('health_depleted', self, 'dead')
 	$Area2D.connect('area_entered', self, '_on_hit_by_fireball')
 	$AnimatedSprite.play()
-	#print(target)
 
 func _physics_process(delta):
 	var target = get_parent().find_node("Player")
 	velocity = (target.global_position - global_position).normalized()
 	distance = global_position.distance_to(target.global_position)
-	#$set_global_rotation(deg2rad(current_angle()))
-	#print(distance)
 	if distance >= 125:
 		move_and_collide(velocity*speed)
 	if distance <=124: #&& distance > 75:
@@ -33,30 +30,24 @@ func _process(delta):
 	if timer<=0:
 		attack()
 		timer = rand_range(0,1)
-	#print(rotation)
 	var facing = 'E'
 	var angle = velocity.angle()
-	#print(angle)
 
 	$AnimatedSprite.animation = facing
 
 func _on_hit_by_fireball(area):
 	$Health.take_damage(7)
-	print('gadersk')
 
 func current_angle():
 	angle_to_player = rad2deg(position.angle_to_point(player.position))
-	#print(angle_to_player)
 	return angle_to_player
 
 func attack():
-    print("Enemy is attacking")
     var player = get_parent().find_node("Player")
     var Fire = preload('res://Scenes/Bosses/fireBoss/MeanGuyFire.tscn')
     emit_signal('fire', Fire, velocity.angle(), position)
 
 func _get_hit(damage):
-	print('yeowch')
 	$Health.take_damage(damage)
 
 func dead():

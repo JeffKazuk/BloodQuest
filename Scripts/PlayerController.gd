@@ -28,24 +28,16 @@ signal hit_enemy(damage)
 signal gold_stick_picked_up
 
 func _ready():
-    #position.x = 400
-    #position.y = 400
     dead = dead.instance()
     $AnimatedSprite.connect('frame_changed', self, 'new_frame')
-    $swing_pivot.get_node('swing').connect('animation_finished', self, 'reset_animation')
+    
 
 func current_angle():
     return get_global_mouse_position().angle_to_point(get_position())
     
 func update_direction():
-    #Gets the location of the mouse in radians
     var angle = current_angle()
     var last_face = facing
-    #print(get_global_mouse_position())
-    #print(get_position())
-    #Changes the looking direction of the character to roughly
-    #where the mouse is
-    #print(angle)
     if angle > PI/8 && angle < 3*PI/8:
         facing = '315'
     if angle > 3*PI/8 && angle < 5*PI/8:
@@ -64,7 +56,6 @@ func update_direction():
         facing = '135'
     if angle > -PI && angle < -7*PI/8:
         facing = '180'
-    #print(facing)
     if last_face != facing:
         angle_changed
     if not dashing:
@@ -80,7 +71,6 @@ func _input(event):
             if prev_item < 0:
                 prev_item = len(weapons)-1
             equipped = weapons[prev_item]
-        print(equipped)
             
     if event.is_action_pressed('zoom_out'):
         if len(weapons) >= 2:
@@ -88,9 +78,8 @@ func _input(event):
             if next_item > len(weapons)-1:
                 next_item = 0
             equipped = weapons[next_item]
-        print(equipped)
 
-#one function for all item pickups, will have to be changed a bit for other items
+
 func pickup_item(item):
     weapons.append(item)
     if len(weapons) == 1:
@@ -167,7 +156,6 @@ func dash():
     $dash.play()
 
 func attack(spot):
-    # print(spot)
     if equipped == 'stick':
         $swing_pivot.rotation = direction.angle()+PI/2
         $swing_pivot.get_node('swing').animation = 'wood'
@@ -177,15 +165,9 @@ func attack(spot):
         $stick_swing.play()
         for node in get_tree().get_nodes_in_group('enemy'):
             if position.distance_to(node.position) < 150:
-                
                 var angle_to_enemy = rad2deg(direction.angle_to(node.velocity))
-                #print(direction)
-                #print(node.direction)
-                print(abs(angle_to_enemy))
-                #I very clearly fucked this up but it works
                 if abs(angle_to_enemy) < 202.5 && abs(angle_to_enemy) > 157.5:
-                    emit_signal('hit_enemy', 50)
-                    # print('hit enemy')
+                    emit_signal('hit_enemy', 10)
 
     if equipped == 'sword':
         $swing_pivot.rotation = direction.angle()+PI/2
@@ -195,16 +177,10 @@ func attack(spot):
         $swing_pivot.get_node('swing').play()
         $sword_swing.play()
         for node in get_tree().get_nodes_in_group('enemy'):
-            if position.distance_to(node.position) < 150:
-                
+            if position.distance_to(node.position) < 250:
                 var angle_to_enemy = rad2deg(direction.angle_to(node.velocity))
-                #print(direction)
-                #print(node.direction)
-                print(abs(angle_to_enemy))
-                #I very clearly fucked this up but it works
                 if abs(angle_to_enemy) < 202.5 && abs(angle_to_enemy) > 157.5:
                     emit_signal('hit_enemy', 30)
-                    # print('hit enemy')
 
     if equipped == 'dagger':
         $swing_pivot.rotation = direction.angle()+PI/2
@@ -214,25 +190,18 @@ func attack(spot):
         $swing_pivot.get_node('swing').play()
         $sword_swing.play()
         for node in get_tree().get_nodes_in_group('enemy'):
-            if position.distance_to(node.position) < 100:
+            if position.distance_to(node.position) < 150:
                 var direction = (get_global_mouse_position()-position).normalized()
                 var angle_to_enemy = rad2deg(direction.angle_to(node.velocity))
-                
-                
-                    #print(direction)
-                    #print(node.direction)
-                print(abs(angle_to_enemy))
-                    #I very clearly fucked this up but it works
                 if abs(angle_to_enemy) < 202.5 && abs(angle_to_enemy) > 157.5:
-                    emit_signal('hit_enemy', 30)
-                    # print('hit enemy')
+                    emit_signal('hit_enemy', 20)
 
     if equipped == 'fire':
         if fire_timer <= 0:
             var Fire = preload('res://Scenes/Player/Fire.tscn')
             emit_signal('fire', Fire, current_angle(), position)
             fire_timer = 0.5
-        #print(deg2rad(float(facing)))
+
 
 func _process(delta):
     # The player's movement vector.
@@ -265,7 +234,6 @@ func _process(delta):
             equipped = weapons[3]
     update_direction()
     direction = (get_global_mouse_position()-position).normalized()
-    #print(equipped)
     if knockback != null:
         $AnimatedSprite.stop()
         velocity = knockback.normalized() * speed
@@ -292,7 +260,6 @@ func _process(delta):
                 $AnimatedSprite.frame = 2
             '315':
                 $AnimatedSprite.frame = 3
-
         $AnimatedSprite.stop()
     move_and_collide(velocity*delta)#moves the player
     frame_timer -= 1
@@ -307,10 +274,6 @@ func new_frame():
             $footstep.pitch_scale = rand_range(1,1.5)
             $footstep.play()
 
-func reset_animation():
-    # $swing_pivot.hide()
-    # $swing_pivot.get_node('swing').frame = 0
-    pass
     
 #detect and take damage from fireballs
 func _on_Hitbox_area_entered(area):

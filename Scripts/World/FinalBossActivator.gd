@@ -20,7 +20,6 @@ func _ready():
     self.connect('body_entered',audioFinal,"boss")
     self.connect('body_exited',audioFinal,"notBoss")
 
-
 func _on_FinalBossActivator_body_entered(body):
     if spawnable:
         get_parent().add_child(boss)
@@ -32,7 +31,6 @@ func _on_FinalBossActivator_body_entered(body):
     get_parent().get_node('Camera2D').zoom.y = 3.25
 
 func _on_FinalBossActivator_body_exited(body):
-    #get_parent().remove_child(boss)
     if spawnable:
         get_parent().remove_child(boss)
     get_parent().get_node('Camera2D').target_name = 'Player'

@@ -6,10 +6,10 @@ var sword = load("res://Sprites/Sword1.png")
 var fire = load("res://Sprites/Test fire.png")
 var dagger = load("res://Sprites/Dagger.png")
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
 	player = get_parent().get_parent()
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+
 func _process(delta):
 	if player != null:
 		if player.equipped == 'stick':

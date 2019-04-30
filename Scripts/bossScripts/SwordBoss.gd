@@ -17,13 +17,11 @@ func _ready():
 	$Health.connect('health_depleted', self, 'dead')
 	player = get_parent().find_node("Player")
 	$Area2D.connect('area_entered', self, '_on_hit_by_fireball')
-	#print(target)
 
 func _physics_process(delta):
 	var target = get_parent().find_node("Player")
 	velocity = (target.global_position - global_position).normalized()
 	distance = global_position.distance_to(target.global_position)
-	#print(distance)
 	if distance >= 100:
 		move_and_collide(velocity*speed)
 	
@@ -47,17 +45,14 @@ func _process(delta):
 
 func current_angle():
 	angle_to_player = rad2deg(position.angle_to_point(player.position))
-	#print(angle_to_player)
 	return angle_to_player
 
 func _on_hit_by_fireball(area):
 	$Health.take_damage(7)
 	$get_hit.play()
-	print('gadersk')
 
 
 func attack():
-	print("Enemy is attacking")
 	$swing_pivot.rotation = deg2rad(current_angle())-PI/2
 	$swing_pivot.get_node('swing').animation = 'metal'
 	$swing_pivot.get_node('swing').frame = 0
@@ -68,7 +63,6 @@ func attack():
         emit_signal('hit_player')
 
 func _get_hit(damage):
-	print('yeowch')
 	$get_hit.play()
 	$Health.take_damage(damage)
 

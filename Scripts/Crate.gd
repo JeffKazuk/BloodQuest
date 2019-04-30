@@ -1,5 +1,4 @@
 extends KinematicBody2D
-#It's a crate nigga
 
 var velocity
 
@@ -15,11 +14,9 @@ func _physics_process(delta):
     move_and_collide(velocity*1)
 
 func pushed_left(area):
-    print('your body')
     velocity.x -= 2
 
 func pushed_right(area):
-    print('my body')
     velocity.x += 2
 
 func no_more(area):

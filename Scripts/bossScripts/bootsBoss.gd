@@ -18,14 +18,12 @@ func _ready():
 	player = get_parent().find_node("Player")
 	$Health.connect('health_depleted', self, 'dead')
 	$Area2D2.connect('area_entered', self, '_on_hit_by_fireball')
-	#print(target)
 
 func _physics_process(delta):
 	var target = get_parent().find_node("Player")
 	if not attacking:
 		velocity = (target.global_position - global_position).normalized()
 		distance = global_position.distance_to(target.global_position)
-	#print(distance)
 	if distance >= 100 || attacking:
 		move_and_collide(velocity*speed)
 
@@ -37,10 +35,8 @@ func _process(delta):
 		speed = 0
 		other_timer = 0.5
 		timer = 5
-	#print(rotation)
 	var facing = 'E'
 	var angle = velocity.angle()
-	#print(angle)
 	if angle > PI/8 && angle < 3*PI/8:
 		facing = 'SE'
 	if angle > 3*PI/8 && angle < 5*PI/8:
@@ -66,7 +62,6 @@ func _process(delta):
 	if other_timer <= 0:
 		attack()
 		other_timer = 10000
-
 	$AnimatedSprite.animation = facing
 	
 func current_angle():
@@ -76,7 +71,6 @@ func current_angle():
 func attack():
 	$dash.play()
 	attacking = true
-	print("Enemy is attacking")
 	var player = get_parent().find_node("Player")
 	var angle_to_player = rad2deg(velocity.angle_to(player.velocity))
 	frame_timer = .5
@@ -86,7 +80,6 @@ func attack():
 func _on_hit_by_fireball(area):
 	$Health.take_damage(10)
 	$get_hit.play()
-	print('gadersk')
 
 func _on_Area2D_body_entered(body):
 	emit_signal('hit_player', velocity)

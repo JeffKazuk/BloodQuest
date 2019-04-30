@@ -18,17 +18,14 @@ func _ready():
     $Health.connect('health_depleted', self, 'dead')
     $Area2D.connect('area_entered', self, '_on_hit_by_fireball')
     self.connect('mana', get_parent(), '_on_finalBoss_fire')
-	#print(target)
 
 func _physics_process(delta):
     var target = get_parent().find_node("Player")
     velocity = (target.global_position - global_position).normalized()
     distance = global_position.distance_to(target.global_position)
-    #$set_global_rotation(deg2rad(current_angle()))
-    #print(distance)
     if distance >= 125:
         move_and_collide(velocity*speed)
-    if distance <=124: #&& distance > 75:
+    if distance <=124:
         move_and_collide(-velocity*(speed*1.5))
 
 func teleport():
@@ -45,29 +42,23 @@ func _process(delta):
     if timer<=0:
         attack()
         timer = rand_range(0,.5)
-    #print(rotation)
     
     var angle = velocity.angle()
-    #print(angle)
     
 
     $AnimatedSprite.animation = 'default'
 
 func _on_hit_by_fireball(area):
     $Health.take_damage(7)
-    print('gadersk')
 
 func _get_hit(damage):
-	print('yeowch')
 	$Health.take_damage(damage)
 
 func current_angle():
     angle_to_player = rad2deg(position.angle_to_point(player.position))
-    #print(angle_to_player)
     return angle_to_player
 
 func attack():
-    print("Enemy is attacking")
     var player = get_parent().find_node("Player")
     var Mana = preload('res://Scenes/Bosses/finalBoss/Mana.tscn')
     emit_signal('mana', Mana, velocity.angle(), position)
@@ -82,6 +73,5 @@ func dead():
     gold_stick.position = get_parent().get_node('stick_podium').position
     gold_stick_activator.position = get_parent().get_node('stick_activator_position').position
     get_parent().get_node('FinalBossArenaRoof').queue_free()
-    # get_parent().get_node('Camera2D').target_name = 'stick_podium'
     get_parent().get_node('FinalBossActivator').spawnable = false
     self.queue_free()

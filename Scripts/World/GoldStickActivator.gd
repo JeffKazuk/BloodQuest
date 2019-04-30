@@ -21,7 +21,6 @@ func _process(delta):
         camera.zoom.x = zoom
         camera.zoom.y = zoom
 
-
 func _on_GoldStickActivator_body_entered(body):
     in_zone = true
 
