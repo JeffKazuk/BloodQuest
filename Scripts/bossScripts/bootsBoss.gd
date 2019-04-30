@@ -78,7 +78,7 @@ func attack():
 	speed = 40
 
 func _on_hit_by_fireball(area):
-	$Health.take_damage(10)
+	$Health.take_damage(15)
 	$get_hit.play()
 
 func _on_Area2D_body_entered(body):

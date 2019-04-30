@@ -36,7 +36,7 @@ func _process(delta):
 	$AnimatedSprite.animation = facing
 
 func _on_hit_by_fireball(area):
-	$Health.take_damage(7)
+	$Health.take_damage(15)
 
 func current_angle():
 	angle_to_player = rad2deg(position.angle_to_point(player.position))
