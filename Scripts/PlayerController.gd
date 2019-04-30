@@ -89,7 +89,7 @@ func pickup_item(item):
 func _on_World_Sword_body_entered(body):
     pickup_item('sword')
     $player_hit.play()
-    $Health.take_damage(30)
+    $Health.take_damage(20)
     
 func _on_World_Stick_body_entered(body):
     pickup_item('stick')
@@ -113,7 +113,7 @@ func _on_World_Boots_body_entered(body):
     default_speed = 800
 
 func _on_World_Shield_body_entered(body):
-    $Health.take_damage(50)
+    $Health.take_damage(30)
     $player_hit.play()
     $Health.shield = true
     emit_signal('shield_picked_up')
