@@ -41,42 +41,42 @@
 [ext_resource path="res://Sprites/TinyKnight/Forward/Tiny Knight running forward6.png" type="Texture" id=39]
 [ext_resource path="res://Sprites/TinyKnight/Forward/Tiny Knight running forward7.png" type="Texture" id=40]
 [ext_resource path="res://Sprites/TinyKnight/Forward/Tiny Knight running forward8.png" type="Texture" id=41]
-[ext_resource path="res://Sprites/TinyKnight/NE/Tiny Knight NE running1.png" type="Texture" id=42]
-[ext_resource path="res://Sprites/TinyKnight/NE/Tiny Knight NE running2.png" type="Texture" id=43]
-[ext_resource path="res://Sprites/TinyKnight/NE/Tiny Knight NE running3.png" type="Texture" id=44]
-[ext_resource path="res://Sprites/TinyKnight/NE/Tiny Knight NE running4.png" type="Texture" id=45]
-[ext_resource path="res://Sprites/TinyKnight/NE/Tiny Knight NE running5.png" type="Texture" id=46]
-[ext_resource path="res://Sprites/TinyKnight/NE/Tiny Knight NE running6.png" type="Texture" id=47]
-[ext_resource path="res://Sprites/TinyKnight/NE/Tiny Knight NE running7.png" type="Texture" id=48]
-[ext_resource path="res://Sprites/TinyKnight/NE/Tiny Knight NE running8.png" type="Texture" id=49]
-[ext_resource path="res://Sprites/TinyKnight/NW/TinyKnight NW running1.png" type="Texture" id=50]
-[ext_resource path="res://Sprites/TinyKnight/NW/TinyKnight NW running2.png" type="Texture" id=51]
-[ext_resource path="res://Sprites/TinyKnight/NW/TinyKnight NW running3.png" type="Texture" id=52]
-[ext_resource path="res://Sprites/TinyKnight/NW/TinyKnight NW running4.png" type="Texture" id=53]
-[ext_resource path="res://Sprites/TinyKnight/NW/TinyKnight NW running5.png" type="Texture" id=54]
-[ext_resource path="res://Sprites/TinyKnight/NW/TinyKnight NW running6.png" type="Texture" id=55]
-[ext_resource path="res://Sprites/TinyKnight/NW/TinyKnight NW running7.png" type="Texture" id=56]
-[ext_resource path="res://Sprites/TinyKnight/NW/TinyKnight NW running8.png" type="Texture" id=57]
-[ext_resource path="res://Sprites/TinyKnight/Dash/Backward Shield.png" type="Texture" id=58]
-[ext_resource path="res://Sprites/TinyKnight/Dash/Forward Shield.png" type="Texture" id=59]
-[ext_resource path="res://Sprites/TinyKnight/Dash/Left Shield.png" type="Texture" id=60]
-[ext_resource path="res://Sprites/TinyKnight/Dash/Right Shield.png" type="Texture" id=61]
-[ext_resource path="res://Sprites/TinyKnight/SW/Tiny Knight SW running1.png" type="Texture" id=62]
-[ext_resource path="res://Sprites/TinyKnight/SW/Tiny Knight SW running2.png" type="Texture" id=63]
-[ext_resource path="res://Sprites/TinyKnight/SW/Tiny Knight SW running3.png" type="Texture" id=64]
-[ext_resource path="res://Sprites/TinyKnight/SW/Tiny Knight SW running4.png" type="Texture" id=65]
-[ext_resource path="res://Sprites/TinyKnight/SW/Tiny Knight SW running5.png" type="Texture" id=66]
-[ext_resource path="res://Sprites/TinyKnight/SW/Tiny Knight SW running6.png" type="Texture" id=67]
-[ext_resource path="res://Sprites/TinyKnight/SW/Tiny Knight SW running7.png" type="Texture" id=68]
-[ext_resource path="res://Sprites/TinyKnight/SW/Tiny Knight SW running8.png" type="Texture" id=69]
-[ext_resource path="res://Sprites/TinyKnight/Right/Running Tiny knight1.png" type="Texture" id=70]
-[ext_resource path="res://Sprites/TinyKnight/Right/Running Tiny knight2.png" type="Texture" id=71]
-[ext_resource path="res://Sprites/TinyKnight/Right/Running Tiny knight3.png" type="Texture" id=72]
-[ext_resource path="res://Sprites/TinyKnight/Right/Running Tiny knight4.png" type="Texture" id=73]
-[ext_resource path="res://Sprites/TinyKnight/Right/Running Tiny knight5.png" type="Texture" id=74]
-[ext_resource path="res://Sprites/TinyKnight/Right/Running Tiny knight6.png" type="Texture" id=75]
-[ext_resource path="res://Sprites/TinyKnight/Right/Running Tiny knight7.png" type="Texture" id=76]
-[ext_resource path="res://Sprites/TinyKnight/Right/Running Tiny knight8.png" type="Texture" id=77]
+[ext_resource path="res://Sprites/TinyKnight/SW/Tiny Knight SW running1.png" type="Texture" id=42]
+[ext_resource path="res://Sprites/TinyKnight/SW/Tiny Knight SW running2.png" type="Texture" id=43]
+[ext_resource path="res://Sprites/TinyKnight/SW/Tiny Knight SW running3.png" type="Texture" id=44]
+[ext_resource path="res://Sprites/TinyKnight/SW/Tiny Knight SW running4.png" type="Texture" id=45]
+[ext_resource path="res://Sprites/TinyKnight/SW/Tiny Knight SW running5.png" type="Texture" id=46]
+[ext_resource path="res://Sprites/TinyKnight/SW/Tiny Knight SW running6.png" type="Texture" id=47]
+[ext_resource path="res://Sprites/TinyKnight/SW/Tiny Knight SW running7.png" type="Texture" id=48]
+[ext_resource path="res://Sprites/TinyKnight/SW/Tiny Knight SW running8.png" type="Texture" id=49]
+[ext_resource path="res://Sprites/TinyKnight/Right/Running Tiny knight1.png" type="Texture" id=50]
+[ext_resource path="res://Sprites/TinyKnight/Right/Running Tiny knight2.png" type="Texture" id=51]
+[ext_resource path="res://Sprites/TinyKnight/Right/Running Tiny knight3.png" type="Texture" id=52]
+[ext_resource path="res://Sprites/TinyKnight/Right/Running Tiny knight4.png" type="Texture" id=53]
+[ext_resource path="res://Sprites/TinyKnight/Right/Running Tiny knight5.png" type="Texture" id=54]
+[ext_resource path="res://Sprites/TinyKnight/Right/Running Tiny knight6.png" type="Texture" id=55]
+[ext_resource path="res://Sprites/TinyKnight/Right/Running Tiny knight7.png" type="Texture" id=56]
+[ext_resource path="res://Sprites/TinyKnight/Right/Running Tiny knight8.png" type="Texture" id=57]
+[ext_resource path="res://Sprites/TinyKnight/NW/TinyKnight NW running1.png" type="Texture" id=58]
+[ext_resource path="res://Sprites/TinyKnight/NW/TinyKnight NW running2.png" type="Texture" id=59]
+[ext_resource path="res://Sprites/TinyKnight/NW/TinyKnight NW running3.png" type="Texture" id=60]
+[ext_resource path="res://Sprites/TinyKnight/NW/TinyKnight NW running4.png" type="Texture" id=61]
+[ext_resource path="res://Sprites/TinyKnight/NW/TinyKnight NW running5.png" type="Texture" id=62]
+[ext_resource path="res://Sprites/TinyKnight/NW/TinyKnight NW running6.png" type="Texture" id=63]
+[ext_resource path="res://Sprites/TinyKnight/NW/TinyKnight NW running7.png" type="Texture" id=64]
+[ext_resource path="res://Sprites/TinyKnight/NW/TinyKnight NW running8.png" type="Texture" id=65]
+[ext_resource path="res://Sprites/TinyKnight/NE/Tiny Knight NE running1.png" type="Texture" id=66]
+[ext_resource path="res://Sprites/TinyKnight/NE/Tiny Knight NE running2.png" type="Texture" id=67]
+[ext_resource path="res://Sprites/TinyKnight/NE/Tiny Knight NE running3.png" type="Texture" id=68]
+[ext_resource path="res://Sprites/TinyKnight/NE/Tiny Knight NE running4.png" type="Texture" id=69]
+[ext_resource path="res://Sprites/TinyKnight/NE/Tiny Knight NE running5.png" type="Texture" id=70]
+[ext_resource path="res://Sprites/TinyKnight/NE/Tiny Knight NE running6.png" type="Texture" id=71]
+[ext_resource path="res://Sprites/TinyKnight/NE/Tiny Knight NE running7.png" type="Texture" id=72]
+[ext_resource path="res://Sprites/TinyKnight/NE/Tiny Knight NE running8.png" type="Texture" id=73]
+[ext_resource path="res://Sprites/TinyKnight/Dash/Backward Shield.png" type="Texture" id=74]
+[ext_resource path="res://Sprites/TinyKnight/Dash/Forward Shield.png" type="Texture" id=75]
+[ext_resource path="res://Sprites/TinyKnight/Dash/Left Shield.png" type="Texture" id=76]
+[ext_resource path="res://Sprites/TinyKnight/Dash/Right Shield.png" type="Texture" id=77]
 [ext_resource path="res://Scripts/Health.gd" type="Script" id=78]
 [ext_resource path="res://audio/player_dash.wav" type="AudioStream" id=79]
 [ext_resource path="res://audio/bash.wav" type="AudioStream" id=80]
@@ -124,28 +124,28 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 42 ), ExtResource( 42 ), ExtResource( 43 ), ExtResource( 44 ), ExtResource( 45 ), ExtResource( 46 ), ExtResource( 46 ), ExtResource( 47 ), ExtResource( 48 ), ExtResource( 49 ) ],
 "loop": true,
-"name": "45",
+"name": "225",
 "speed": 15.0
 }, {
-"frames": [ ExtResource( 50 ), ExtResource( 50 ), ExtResource( 51 ), ExtResource( 52 ), ExtResource( 53 ), ExtResource( 54 ), ExtResource( 54 ), ExtResource( 55 ), ExtResource( 56 ), ExtResource( 57 ) ],
+"frames": [ ExtResource( 50 ), ExtResource( 51 ), ExtResource( 52 ), ExtResource( 53 ), ExtResource( 53 ), ExtResource( 54 ), ExtResource( 55 ), ExtResource( 56 ), ExtResource( 57 ), ExtResource( 57 ) ],
+"loop": true,
+"name": "0",
+"speed": 15.0
+}, {
+"frames": [ ExtResource( 58 ), ExtResource( 58 ), ExtResource( 59 ), ExtResource( 60 ), ExtResource( 61 ), ExtResource( 62 ), ExtResource( 62 ), ExtResource( 63 ), ExtResource( 64 ), ExtResource( 65 ) ],
 "loop": true,
 "name": "135",
 "speed": 15.0
 }, {
-"frames": [ ExtResource( 58 ), ExtResource( 59 ), ExtResource( 60 ), ExtResource( 61 ) ],
+"frames": [ ExtResource( 66 ), ExtResource( 66 ), ExtResource( 67 ), ExtResource( 68 ), ExtResource( 69 ), ExtResource( 70 ), ExtResource( 70 ), ExtResource( 71 ), ExtResource( 72 ), ExtResource( 73 ) ],
+"loop": true,
+"name": "45",
+"speed": 15.0
+}, {
+"frames": [ ExtResource( 74 ), ExtResource( 75 ), ExtResource( 76 ), ExtResource( 77 ) ],
 "loop": true,
 "name": "Dash",
 "speed": 0.0
-}, {
-"frames": [ ExtResource( 62 ), ExtResource( 62 ), ExtResource( 63 ), ExtResource( 64 ), ExtResource( 65 ), ExtResource( 66 ), ExtResource( 66 ), ExtResource( 67 ), ExtResource( 68 ), ExtResource( 69 ) ],
-"loop": true,
-"name": "225",
-"speed": 15.0
-}, {
-"frames": [ ExtResource( 70 ), ExtResource( 71 ), ExtResource( 72 ), ExtResource( 73 ), ExtResource( 73 ), ExtResource( 74 ), ExtResource( 75 ), ExtResource( 76 ), ExtResource( 77 ), ExtResource( 77 ) ],
-"loop": true,
-"name": "0",
-"speed": 15.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
