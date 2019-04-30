@@ -49,7 +49,7 @@ func _process(delta):
     $AnimatedSprite.animation = 'default'
 
 func _on_hit_by_fireball(area):
-    $Health.take_damage(7)
+    $Health.take_damage(15)
 
 func _get_hit(damage):
 	$Health.take_damage(damage)

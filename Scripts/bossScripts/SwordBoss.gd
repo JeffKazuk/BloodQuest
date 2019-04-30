@@ -48,7 +48,7 @@ func current_angle():
 	return angle_to_player
 
 func _on_hit_by_fireball(area):
-	$Health.take_damage(7)
+	$Health.take_damage(15)
 	$get_hit.play()
 
 
