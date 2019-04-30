@@ -96,6 +96,7 @@ func crate_here(area):
 			shield = shield.instance()
 			add_child(shield)
 			shield.position = $shield_spawn_point.position
+			shield_released = true
 
 func crate_gone(area):
 	crate_counter -= 1
