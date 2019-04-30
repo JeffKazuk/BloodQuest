@@ -164,10 +164,12 @@ func attack(spot):
         $swing_pivot.get_node('swing').play()
         $stick_swing.play()
         for node in get_tree().get_nodes_in_group('enemy'):
-            if position.distance_to(node.position) < 150:
+            print(node)
+            print(position.distance_to(node.position))
+            if position.distance_to(node.position) < 200:
                 var angle_to_enemy = rad2deg(direction.angle_to(node.velocity))
                 if abs(angle_to_enemy) < 202.5 && abs(angle_to_enemy) > 157.5:
-                    emit_signal('hit_enemy', 10)
+                    emit_signal('hit_enemy', 20)
 
     if equipped == 'sword':
         $swing_pivot.rotation = direction.angle()+PI/2
@@ -180,7 +182,7 @@ func attack(spot):
             if position.distance_to(node.position) < 250:
                 var angle_to_enemy = rad2deg(direction.angle_to(node.velocity))
                 if abs(angle_to_enemy) < 202.5 && abs(angle_to_enemy) > 157.5:
-                    emit_signal('hit_enemy', 30)
+                    emit_signal('hit_enemy', 40)
 
     if equipped == 'dagger':
         $swing_pivot.rotation = direction.angle()+PI/2
@@ -194,7 +196,7 @@ func attack(spot):
                 var direction = (get_global_mouse_position()-position).normalized()
                 var angle_to_enemy = rad2deg(direction.angle_to(node.velocity))
                 if abs(angle_to_enemy) < 202.5 && abs(angle_to_enemy) > 157.5:
-                    emit_signal('hit_enemy', 20)
+                    emit_signal('hit_enemy', 30)
 
     if equipped == 'fire':
         if fire_timer <= 0:
@@ -282,7 +284,6 @@ func _on_Hitbox_area_entered(area):
     
 func _on_bootsBoss_hit_player(velocity):
     $bash.play()
-    print('Das Boot')
     $Health.take_damage(10)
     knockback = velocity
     speed = 800
@@ -290,9 +291,7 @@ func _on_bootsBoss_hit_player(velocity):
 
 func _on_SwordBoss_hit_player():
     $player_hit.play()
-    print('Get Fukt')
     $Health.take_damage(20)
 
 func _on_Health_health_depleted():
-    print('dead')
     get_parent().add_child(dead)

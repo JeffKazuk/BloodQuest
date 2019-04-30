@@ -10,6 +10,7 @@ var distance =0
 var attack_timer = 80000
 var sword
 var Sword
+var flash_timer = 0
 signal hit_player
 
 func _ready():
@@ -25,8 +26,6 @@ func _physics_process(delta):
 	if distance >= 100:
 		move_and_collide(velocity*speed)
 	
-	
-
 func _process(delta):
 	attack_timer -= delta
 	timer -= delta
@@ -42,15 +41,21 @@ func _process(delta):
 		attack()
 		speed = 1
 	$AnimatedSprite.animation = 'default'
+	flash_timer -= delta
+	if flash_timer <= 0:
+		if not modulate == Color(1,1,1):
+			modulate = Color(1,1,1)
+	# modulate = Color(1,1,1)
 
 func current_angle():
 	angle_to_player = rad2deg(position.angle_to_point(player.position))
 	return angle_to_player
 
 func _on_hit_by_fireball(area):
-	$Health.take_damage(15)
+	modulate = Color(1,0,0)
+	flash_timer = .2
+	$Health.take_damage(20)
 	$get_hit.play()
-
 
 func attack():
 	$swing_pivot.rotation = deg2rad(current_angle())-PI/2
@@ -63,6 +68,8 @@ func attack():
         emit_signal('hit_player')
 
 func _get_hit(damage):
+	modulate = Color(1,0,0)
+	flash_timer = .2
 	$get_hit.play()
 	$Health.take_damage(damage)
 

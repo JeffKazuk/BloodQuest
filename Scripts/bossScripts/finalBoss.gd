@@ -10,6 +10,7 @@ var player
 var distance = 0
 var teleport_timer = 5
 var gold_stick
+var flash_timer = 0
 
 
 func _ready():
@@ -44,15 +45,24 @@ func _process(delta):
         timer = rand_range(0,.5)
     
     var angle = velocity.angle()
-    
+    flash_timer -= delta
+    if flash_timer <= 0:
+        if not modulate == Color(1,1,1):
+            modulate = Color(1,1,1)
 
     $AnimatedSprite.animation = 'default'
 
 func _on_hit_by_fireball(area):
-    $Health.take_damage(15)
+    $get_hit.play()
+    modulate = Color(1,0,0)
+    flash_timer = .2
+    $Health.take_damage(20)
 
 func _get_hit(damage):
-	$Health.take_damage(damage)
+    $get_hit.play()
+    modulate = Color(1,0,0)
+    flash_timer = .2
+    $Health.take_damage(damage)
 
 func current_angle():
     angle_to_player = rad2deg(position.angle_to_point(player.position))
