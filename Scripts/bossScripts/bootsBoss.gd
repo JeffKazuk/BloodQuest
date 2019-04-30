@@ -10,6 +10,7 @@ var frame_timer = 10000
 var other_timer = 10000
 var attacking = false
 var boots
+var flash_timer = 0
 
 signal hit_player(velocity)
 
@@ -63,6 +64,10 @@ func _process(delta):
 		attack()
 		other_timer = 10000
 	$AnimatedSprite.animation = facing
+	flash_timer -= delta
+	if flash_timer <= 0:
+		if not modulate == Color(1,1,1):
+			modulate = Color(1,1,1)
 	
 func current_angle():
 	angle_to_player = rad2deg(position.angle_to_point(player.position))
@@ -78,13 +83,17 @@ func attack():
 	speed = 40
 
 func _on_hit_by_fireball(area):
-	$Health.take_damage(15)
+	modulate = Color(1,0,0)
+	flash_timer = .2
+	$Health.take_damage(20)
 	$get_hit.play()
 
 func _on_Area2D_body_entered(body):
 	emit_signal('hit_player', velocity)
 
 func _get_hit(damage):
+	modulate = Color(1,0,0)
+	flash_timer = .2
 	$get_hit.play()
 	$Health.take_damage(damage)
 

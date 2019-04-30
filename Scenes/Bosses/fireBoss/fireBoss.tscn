@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=2]
+[gd_scene load_steps=68 format=2]
 
 [ext_resource path="res://Scripts/bossScripts/fireBoss.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Firelord/Firelord1.png" type="Texture" id=2]
@@ -63,6 +63,7 @@
 [ext_resource path="res://Sprites/Firelord/Firelord60.png" type="Texture" id=61]
 [ext_resource path="res://Sprites/sprite_7.png" type="Texture" id=62]
 [ext_resource path="res://Scripts/Health.gd" type="Script" id=63]
+[ext_resource path="res://audio/hit.wav" type="AudioStream" id=64]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -110,6 +111,8 @@ animations = [ {
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 26.6667, 45.3333 )
 
+[sub_resource type="CapsuleShape2D" id=3]
+
 [node name="fireBoss" type="KinematicBody2D" groups=[
 "enemy",
 ]]
@@ -133,4 +136,10 @@ collision_mask = 1024
 position = Vector2( 4, 4 )
 scale = Vector2( 3, 3 )
 shape = SubResource( 2 )
+
+[node name="get_hit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 64 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 3 )
 

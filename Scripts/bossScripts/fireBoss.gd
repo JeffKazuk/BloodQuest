@@ -8,6 +8,7 @@ var angle_to_player = 0;
 signal fire (Fire, rotation, position)
 var player
 var distance = 0
+var flash_timer = 0
 
 func _ready():
 	set_physics_process(true)
@@ -32,11 +33,17 @@ func _process(delta):
 		timer = rand_range(0,1)
 	var facing = 'E'
 	var angle = velocity.angle()
-
+	flash_timer -= delta
+	if flash_timer <= 0:
+		if not modulate == Color(1,1,1):
+			modulate = Color(1,1,1)
 	$AnimatedSprite.animation = facing
 
 func _on_hit_by_fireball(area):
-	$Health.take_damage(15)
+	$get_hit.play()
+	modulate = Color(1,0,0)
+	flash_timer = .2
+	$Health.take_damage(20)
 
 func current_angle():
 	angle_to_player = rad2deg(position.angle_to_point(player.position))
@@ -48,6 +55,9 @@ func attack():
     emit_signal('fire', Fire, velocity.angle(), position)
 
 func _get_hit(damage):
+	$get_hit.play()
+	modulate = Color(1,0,0)
+	flash_timer = .2
 	$Health.take_damage(damage)
 
 func dead():
