@@ -39,28 +39,6 @@ func _process(delta):
 			attack_timer = .2
 			speed = 0
 		timer = rand_range(0,2)
-	#print(rotation)
-	var facing = 'E'
-	var angle = velocity.angle()
-	#print(angle)
-	if angle > PI/8 && angle < 3*PI/8:
-		facing = 'SE'
-	if angle > 3*PI/8 && angle < 5*PI/8:
-		facing = 'S'
-	if angle > 5*PI/8 && angle < 7*PI/8:
-		facing = 'SW'
-	if angle > 7*PI/8 && angle < PI:
-		facing = 'W'
-	if angle > -PI/8 && angle < PI/8:
-		facing = 'E'
-	if angle > -3*PI/8 && angle < -PI/8:
-		facing = 'NE'
-	if angle > -5*PI/8 && angle < -3*PI/8:
-		facing = 'N'
-	if angle > -7*PI/8 && angle < -5*PI/8:
-		facing = 'NW'
-	if angle > -PI && angle < -7*PI/8:
-		facing = 'W'
 	if attack_timer <= 0:
 		attack_timer = 80000
 		attack()
