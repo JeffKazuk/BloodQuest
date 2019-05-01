@@ -15,9 +15,14 @@ _global_script_class_icons={
 
 [application]
 
-config/name="test"
+config/name="Blood Quest"
 run/main_scene="res://Scenes/World/OverWorld.tscn"
-config/icon="res://Sprites/icon.png"
+config/icon="res://Sprites/Stick.png"
+
+[display]
+
+window/size/resizable=false
+window/stretch/aspect="keep"
 
 [input]
 
